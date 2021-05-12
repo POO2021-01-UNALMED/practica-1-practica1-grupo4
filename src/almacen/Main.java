@@ -11,9 +11,10 @@ public class Main {
 	public static void main(String[] args) {
 		
 		Scanner input = new Scanner(System.in);
-		
 		Almacen a = new Almacen();
 		Cliente c = new Cliente("Mateo", "Arias Arias", 1000871372, "Cra80-45sur");
+		Pedido p1 = new Pedido();
+		Almacen.pedido = p1;
 		c.llamar();
 		System.out.println(c.picker.getNombre());
 		System.out.println(c.picker.llamada);
@@ -31,34 +32,123 @@ public class Main {
 					}
 					String categoria = input.next().toUpperCase();
 					switch(categoria) {
-					case "LACTEOS":
-						for (String l : Almacen.lacteos) {
-							System.out.println("Presione " + Almacen.lacteos.indexOf(l)+ "   para seleccionar: " + l);
-						}
-						break;
-					case "CARNES":
-						for (String ca : Almacen.carnes) {
-							System.out.println("Presione " + Almacen.carnes.indexOf(ca)+ "   para seleccionar: " + ca);
-						}
-						break;
-					case "VEGETALES":
-						for (String v : Almacen.vegetales) {
-							System.out.println("Presione " + Almacen.vegetales.indexOf(v)+ "   para seleccionar: " + v);
-						}
-						break;
-					case "FRUTAS":
-						for (String f : Almacen.frutas) {
-							System.out.println("Presione " + Almacen.frutas.indexOf(f)+ "   para seleccionar: " + f);
-						}
-						break;
-					case "GRANOS":
-						for (String g : Almacen.granos) {
-							System.out.println("Presione " + Almacen.granos.indexOf(g)+ "   para seleccionar: " + g);
-						}
-						break;
+						case "LACTEOS":
+							while(true) {
+								for (String l : Almacen.lacteos) {
+									System.out.println("Presione " + (Almacen.lacteos.indexOf(l) + 1 )+ "   para seleccionar: " + l);
+									
+								}
+								System.out.println("Presione 0 para continuar");
+								int seleccion = input.nextInt();
+								switch(seleccion) {
+								case 1:
+								case 2:
+								case 3:
+								case 4:
+								case 5:
+								Pedido.agregarProducto(Almacen.lacteos.get(seleccion - 1));
+								continue;
+								default:
+									break;
+								}
+								break;
+							}
+							continue;
+						case "CARNES":
+							while(true) {
+								for (String ca : Almacen.carnes) {
+									System.out.println("Presione " + (Almacen.carnes.indexOf(ca) + 1 )+ "   para seleccionar: " + ca);
+									
+								}
+								System.out.println("Presione 0 para continuar");
+								int seleccion = input.nextInt();
+								switch(seleccion) {
+								case 1:
+								case 2:
+								case 3:
+								case 4:
+								Pedido.agregarProducto(Almacen.carnes.get(seleccion - 1));
+								continue;
+								default:
+									break;
+								}
+								break;
+							}
+							continue;
+						case "VEGETALES":
+							while(true) {
+								for (String v : Almacen.vegetales) {
+									System.out.println("Presione " + (Almacen.vegetales.indexOf(v) + 1 )+ "   para seleccionar: " + v);
+									
+								}
+								System.out.println("Presione 0 para continuar");
+								int seleccion = input.nextInt();
+								switch(seleccion) {
+								case 1:
+								case 2:
+								case 3:
+								case 4:
+								case 5:
+								case 6:
+								case 7:
+								Pedido.agregarProducto(Almacen.vegetales.get(seleccion - 1));
+								continue;
+								default:
+									break;
+								}
+								break;
+							}
+							continue;
+						case "FRUTAS":
+							while(true) {
+								for (String f : Almacen.frutas) {
+									System.out.println("Presione " + (Almacen.frutas.indexOf(f) + 1 )+ "   para seleccionar: " + f);
+									
+								}
+								System.out.println("Presione 0 para continuar");
+								int seleccion = input.nextInt();
+								switch(seleccion) {
+								case 1:
+								case 2:
+								case 3:
+								case 4:
+								case 5:
+								case 6:
+								case 7:
+								Pedido.agregarProducto(Almacen.frutas.get(seleccion - 1));
+								continue;
+								default:
+									break;
+								}
+								break;
+							}
+							continue;
+						case "GRANOS":
+							while(true) {
+								for (String g : Almacen.granos) {
+									System.out.println("Presione " + (Almacen.granos.indexOf(g) + 1 )+ "   para seleccionar: " + g);
+									
+								}
+								System.out.println("Presione 0 para continuar");
+								int seleccion = input.nextInt();
+								switch(seleccion) {
+								case 1:
+								case 2:
+								case 3:
+								case 4:
+								case 5:
+								Pedido.agregarProducto(Almacen.granos.get(seleccion - 1));
+								continue;
+								default:
+									break;
+								}
+								break;
+							}
+							continue;
 					}
 					break;
-				}
+					}
+
 					break;
 				
 			case "B":
@@ -67,6 +157,8 @@ public class Main {
 			}
 			break;
 		}
+		
+		System.out.println(Cliente.getPedido().carrito);
 		
 	}
 

@@ -9,6 +9,7 @@ import personas.*;
 public class Almacen {
 	
 	public enum Productos{lACTEOS, CARNES, VEGETALES, FRUTAS, GRANOS}
+	public static Pedido pedido;
 	public static ArrayList<String> lacteos = new ArrayList<>();
 	public static ArrayList<String> carnes = new ArrayList<>();
 	public static ArrayList<String> vegetales = new ArrayList<>();
@@ -77,5 +78,8 @@ public class Almacen {
 		
 	}
 	
+	public static void asignarPedido() {
+		Cliente.setPedido(pedido);
+	}
 	
 }
