@@ -14,8 +14,8 @@ import java.util.ArrayList;
 public class Picker extends Persona{
 	
 	private int numeroDispositivo; // numero del dispositivo que usa el picker.
-	public LocalTime comienzoTurno = LocalTime.of(9, 0, 0);  // comienzo del turno del Picker
-	public LocalTime FinTurno = LocalTime.of(23, 0, 0);  // fin del turno del Picker
+	public LocalTime comienzoTurno = LocalTime.of(23, 0, 0);  // comienzo del turno del Picker
+	public LocalTime FinTurno = LocalTime.of(23, 59, 0);  // fin del turno del Picker
 	public String estado;  // "ACTIVO" o "INACTIVO", el estado del Picker lo determina su horario de trabajo
 	public boolean llamada; // determina si el Picker está o no atendiendo un cliente
 	
