@@ -4,8 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.time.*;
 
-import almacen.Almacen.Productos;
-import persona.*;
+
+import persona.Picker;
+import persona.Conductor;
+import persona.Cliente;
 
 
 
@@ -31,11 +33,11 @@ public class Almacen {
 	}
 	
 	public Almacen() {
-		Picker p1 = new Picker("Reinaldo", "Garcia", randomID(), 16, false,LocalTime.of(8,0,0),LocalTime.of(23,0,0));
+		Picker p1 = new Picker("Reinaldo","Ramirez",randomID(),19,false,LocalTime.of(8,0,0),LocalTime.of(23,59,0));
 		Picker p2 = new Picker("Sofia", "Arango", randomID(),20, true,LocalTime.of(9,0,0),LocalTime.of(23,0,0));
-		Picker p3 = new Picker("Santiago", "Restrepo", randomID(),22, false,LocalTime.of(12,0,0),LocalTime.of(23,0,0));
-		Picker p4 = new Picker("Valentina", "Velez", randomID(),22, false,LocalTime.of(13,0,0),LocalTime.of(23,0,0));
-		Picker p5 = new Picker("Jorge", "Castaño", randomID(),22, true,LocalTime.of(13,0,0),LocalTime.of(23,0,0));
+		Picker p3 = new Picker("Santiago", "Restrepo", randomID(),22, false,LocalTime.of(8,0,0),LocalTime.of(23,0,0));
+		Picker p4 = new Picker("Valentina", "Velez", randomID(),22, false,LocalTime.of(18,0,0),LocalTime.of(23,0,0));
+		Picker p5 = new Picker("Jorge", "Castaño", randomID(),22, true,LocalTime.of(8,0,0),LocalTime.of(23,0,0));
 		pickers.add(p1);
 		pickers.add(p2);
 		pickers.add(p3);
@@ -87,5 +89,6 @@ public class Almacen {
 	
 	public static void asignarPedido() {
 		Cliente.setPedido(pedido);
+		Cliente.getPedido().estado= Cliente.getPedido().estado.INICIADO;
 	}
 }

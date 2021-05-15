@@ -2,18 +2,27 @@ package persona;
 import java.time.LocalTime;
 public class Conductor extends Empleados {
 	
-	private int numeroVehiculo;
-	public LocalTime comienzoTurno = LocalTime.of(9, 0, 0);  // comienzo del turno del Conductor
-	public LocalTime FinTurno = LocalTime.of(18, 0, 0);  // fin del turno del Conductor
-	private Picker picker;
-	public String estado;
-	public boolean viaje;
+	public Picker picker;
 	
 	// CONSTRUCTOR para la clase "Conductor"
 	
-	public Conductor(String nombre, String apellidos, int ID, boolean viaje) {
-		super(nombre, apellidos, ID);
-		this.viaje = viaje;
+	public Conductor(String nombre, String apellidos, int ID, int numeroVehiculo, boolean viaje, LocalTime comienzoTurno,LocalTime finTurno) {
+		super(nombre,apellidos,ID,numeroVehiculo,viaje, comienzoTurno,finTurno);
+		this.setStatus();
+		
+	}
+	public boolean withinRange() {
+		return (LocalTime.now().isBefore(finTurno) && LocalTime.now().isAfter(comienzoTurno));
+	}
+	
+	// cambia el estado del picker a "ACTIVO" o "INACTIVO" según sea el caso. Está función se usa en el constructor
+	public void setStatus() {
+		if (!this.withinRange()) {
+			this.estado = "INACTIVO";
+		}
+		else {
+			this.estado = "ACTIVO";
+		}
 	}
 	
 	

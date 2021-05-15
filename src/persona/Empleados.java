@@ -19,11 +19,11 @@ public abstract class Empleados {
 		this.ID= ID;
 		this.artefacto = artefacto;
 		this.accion = accion;
-		this.setStatus();
 		this.comienzoTurno= comienzoTurno;
 		this.finTurno=finTurno;
 	}
 	public abstract void setStatus();
+	public abstract boolean withinRange();
 	
 	public String getNombre() {
 		return this.nombre;

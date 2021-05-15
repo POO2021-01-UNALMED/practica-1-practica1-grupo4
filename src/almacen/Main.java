@@ -11,7 +11,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		Scanner input = new Scanner(System.in);
-		Almacen a = new Almacen();
+		Almacen a1 = new Almacen();
 		Cliente c = new Cliente("Mateo", "Arias Arias", 1000871372);
 		Pedido p1 = new Pedido();
 		Almacen.pedido = p1;

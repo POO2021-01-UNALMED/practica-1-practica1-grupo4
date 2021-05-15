@@ -25,7 +25,9 @@ public class Cliente{
 	
 	public void llamar() {
 		this.picker = Almacen.randomPicker();
+		this.picker.cliente=this;
 		Almacen.asignarPedido();
+		
 		
 	}
 	public static void setPedido(Pedido p) {

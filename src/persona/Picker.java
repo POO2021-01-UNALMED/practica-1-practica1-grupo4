@@ -5,12 +5,13 @@ import java.util.ArrayList;
 
 public class Picker extends Empleados {
 
-	
+	 public Cliente cliente;
 	
 	// CONSTRUCTOR para la clase "Picker"
 	
 	public Picker(String nombre, String apellidos, int ID, int numeroDispositivo, boolean llamada, LocalTime comienzoTurno,LocalTime finTurno){
 		super(nombre, apellidos, ID,numeroDispositivo,llamada,comienzoTurno,finTurno);
+		this.setStatus();
 		
 	}
 	// esta función determina si el Picker se encuentra o no en su horario de trabajo.
