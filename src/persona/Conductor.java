@@ -1,15 +1,6 @@
-package personas;
-
+package persona;
 import java.time.LocalTime;
-
-/*
- ///CONDUCTOR\\\
-  
-  Un conductor se encarga de llevar la compra que se le fue entregada por el picker al cliente.
-  
- */
-
-public class Conductor extends Persona{
+public class Conductor extends Empleados {
 	
 	private int numeroVehiculo;
 	public LocalTime comienzoTurno = LocalTime.of(9, 0, 0);  // comienzo del turno del Conductor
@@ -26,6 +17,4 @@ public class Conductor extends Persona{
 	}
 	
 	
-	
-
 }

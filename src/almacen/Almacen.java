@@ -2,12 +2,15 @@ package almacen;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.time.*;
 
 import almacen.Almacen.Productos;
-import personas.*;
+import persona.*;
+
+
 
 public class Almacen {
-	
+
 	public enum Productos{lACTEOS, CARNES, VEGETALES, FRUTAS, GRANOS}
 	public static Pedido pedido;
 	public static ArrayList<String> lacteos = new ArrayList<>();
@@ -28,12 +31,16 @@ public class Almacen {
 	}
 	
 	public Almacen() {
-		Picker p1 = new Picker("Reinaldo", "Garcia", randomID(), 16, false);
-		Picker p2 = new Picker("Sofia", "Arango", randomID(),20, false);
-		Picker p3 = new Picker("Santiago", "Restrepo", randomID(),22, false);
+		Picker p1 = new Picker("Reinaldo", "Garcia", randomID(), 16, false,LocalTime.of(8,0,0),LocalTime.of(23,0,0));
+		Picker p2 = new Picker("Sofia", "Arango", randomID(),20, true,LocalTime.of(9,0,0),LocalTime.of(23,0,0));
+		Picker p3 = new Picker("Santiago", "Restrepo", randomID(),22, false,LocalTime.of(12,0,0),LocalTime.of(23,0,0));
+		Picker p4 = new Picker("Valentina", "Velez", randomID(),22, false,LocalTime.of(13,0,0),LocalTime.of(23,0,0));
+		Picker p5 = new Picker("Jorge", "Castaño", randomID(),22, true,LocalTime.of(13,0,0),LocalTime.of(23,0,0));
 		pickers.add(p1);
 		pickers.add(p2);
 		pickers.add(p3);
+		pickers.add(p4);
+		pickers.add(p5);
 		lacteos.add("Leche");
 		lacteos.add("Queso");
 		lacteos.add("Mantequilla");
@@ -52,7 +59,7 @@ public class Almacen {
 		vegetales.add("Cilantro");
 		frutas.add("Manzana");
 		frutas.add("Uvas");
-		frutas.add("Pi�a");
+		frutas.add("Piña");
 		frutas.add("Naranja");
 		frutas.add("Pera");
 		frutas.add("Coco");
@@ -72,7 +79,7 @@ public class Almacen {
 			index = (int)(Math.random()*pickers.size());
 		}
 		while(!pickers.get(index).disponibleParaAtender());
-		pickers.get(index).llamada = true;
+		pickers.get(index).accion = true;
 		
 		return pickers.get(index);
 		
@@ -81,5 +88,4 @@ public class Almacen {
 	public static void asignarPedido() {
 		Cliente.setPedido(pedido);
 	}
-	
 }

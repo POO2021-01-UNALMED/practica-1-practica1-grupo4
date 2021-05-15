@@ -1,5 +1,5 @@
 package almacen;
-import personas.*;
+import persona.*;
 import java.util.*;
 
 import almacen.Almacen.Productos;
@@ -12,12 +12,12 @@ public class Main {
 		
 		Scanner input = new Scanner(System.in);
 		Almacen a = new Almacen();
-		Cliente c = new Cliente("Mateo", "Arias Arias", 1000871372, "Cra80-45sur");
+		Cliente c = new Cliente("Mateo", "Arias Arias", 1000871372);
 		Pedido p1 = new Pedido();
 		Almacen.pedido = p1;
 		c.llamar();
 		System.out.println(c.picker.getNombre());
-		System.out.println(c.picker.llamada);
+		System.out.println(c.picker.accion);
 		
 		System.out.println("Escoja una opcion: \n" +"A. Hacer domicilio\n"+"B. Salir");
 		String opcion;
@@ -26,7 +26,7 @@ public class Main {
 			switch(opcion) {
 			case "A":
 				while(true) {
-					System.out.println("Seleccionar Categoría");
+					System.out.println("Seleccionar CategorÃ­a");
 					for (Productos pro : Almacen.productosl) {
 						System.out.println(pro);
 					}
