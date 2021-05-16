@@ -2,7 +2,6 @@ package persona;
 import almacen.*;
 import java.util.*;
 
-<<<<<<< HEAD
 /// CLIENTE \\\ para nuestro caso será el usuario en cuestión, el que ordena el domicilio y escoge los productos
 
 public class Cliente{
@@ -18,16 +17,6 @@ public class Cliente{
 	private static Pedido pedido; // Pedido realizado por el cliente
 	
 	// CONSTRUCTOR para la clase 'Cliente'
-=======
-public class Cliente{
-	
-	public String nombre;
-	public String apellidos;
-	public int ID;
-	public Picker picker;
-	private Conductor conductor;
-	private static Pedido pedido;
->>>>>>> edb663e196d2f0bd5e4b7fff9b843b536b3a42e8
 	
 	public Cliente(String nombre, String apellidos, int ID) {
 		this.nombre= nombre;
@@ -35,18 +24,14 @@ public class Cliente{
 		this.ID=ID;
 		
 	}
-<<<<<<< HEAD
 	
 	// el siguiente método llamado generarDireccion(), genera una dirección aleatoria para el cliente en la ciudad.
-=======
->>>>>>> edb663e196d2f0bd5e4b7fff9b843b536b3a42e8
 	public static int generarDireccion() {
 		 int min = 1000000000;
 		 int max = 2000000000;
 		 return (int)Math.floor(Math.random()*(max - min + 1) + min);
 	}
 	
-<<<<<<< HEAD
 	/*el siguiente método llamar(), representa el instante en el que el usuario comienza a interactuar con el almacen,
 	 la idea es asignarle un Picker y un pedido para que comience a escoger los productos que desea*/
 	public void llamar() {
@@ -79,25 +64,12 @@ public class Cliente{
 	}
 	
 	// Los siguientes métodos son un setter y getter respectivamente para el atributo de Pedido
-=======
-	public void llamar() {
-		this.picker = Almacen.randomPicker();
-		this.picker.cliente=this;
-		Almacen.asignarPedido();
-		
-		
-	}
->>>>>>> edb663e196d2f0bd5e4b7fff9b843b536b3a42e8
 	public static void setPedido(Pedido p) {
 		pedido = p;
 	}
 	public static Pedido getPedido() {
 		return pedido;
 	}
-<<<<<<< HEAD
 	
 	
 }
-=======
-}
->>>>>>> edb663e196d2f0bd5e4b7fff9b843b536b3a42e8

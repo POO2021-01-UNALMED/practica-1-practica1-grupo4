@@ -24,10 +24,7 @@ public abstract class Empleados {
 	}
 	public abstract void setStatus();
 	public abstract boolean withinRange();
-<<<<<<< HEAD
 	public abstract boolean disponibleParaAtender();
-=======
->>>>>>> edb663e196d2f0bd5e4b7fff9b843b536b3a42e8
 	
 	public String getNombre() {
 		return this.nombre;
@@ -42,11 +39,4 @@ public abstract class Empleados {
 	}
 	
 	
-<<<<<<< HEAD
 }
-=======
-}
-
-
-
->>>>>>> edb663e196d2f0bd5e4b7fff9b843b536b3a42e8

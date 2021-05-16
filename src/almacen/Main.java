@@ -16,22 +16,17 @@ public class Main {
 		Pedido p1 = new Pedido();
 		Almacen.pedido = p1;
 		c.llamar();
-<<<<<<< HEAD
 		System.out.println(c.getPicker().getNombre());
 		System.out.println(c.getPicker().accion);
-=======
-		System.out.println(c.picker.getNombre());
-		System.out.println(c.picker.accion);
->>>>>>> edb663e196d2f0bd5e4b7fff9b843b536b3a42e8
 		
-		System.out.println("Escoja una opcion: \n" +"A. Hacer domicilio\n"+"B. Consultar estado de mi domicilio\n" + "C. Salir");
+		System.out.println("Escoja una opcion: \n" +"A. Hacer domicilio\n"+"B. Consultar estado de mi domicilio\n" + "C. salir");
 		String opcion;
 		opcion= input.next().toUpperCase();
 		while(true) {
 			switch(opcion) {
 			case "A":
 				while(true) {
-					System.out.println("Seleccionar CategorÃ­a");
+					System.out.println("Seleccionar Categoría");
 					for (Productos pro : Almacen.productosl) {
 						System.out.println(pro);
 					}

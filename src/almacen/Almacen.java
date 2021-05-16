@@ -9,7 +9,6 @@ import persona.Picker;
 import persona.Conductor;
 import persona.Cliente;
 
-<<<<<<< HEAD
 ///ALMACEN\\\ establecimiento comercial en cuestión.
 
 
@@ -30,21 +29,6 @@ public class Almacen {
 	public static ArrayList<String> granos = new ArrayList<>();// lista de granos
 	public static ArrayList<Picker>pickers = new ArrayList<>();// lista de los Pickers del almacén
 	public static ArrayList<Conductor>conductores = new ArrayList<>();// lista de los conductores del almacén 
-=======
-
-
-public class Almacen {
-
-	public enum Productos{lACTEOS, CARNES, VEGETALES, FRUTAS, GRANOS}
-	public static Pedido pedido;
-	public static ArrayList<String> lacteos = new ArrayList<>();
-	public static ArrayList<String> carnes = new ArrayList<>();
-	public static ArrayList<String> vegetales = new ArrayList<>();
-	public static ArrayList<String> frutas = new ArrayList<>();
-	public static ArrayList<String> granos = new ArrayList<>();
-	public static ArrayList<Picker>pickers = new ArrayList<>();
-	public static ArrayList<Conductor>conductores = new ArrayList<>();
->>>>>>> edb663e196d2f0bd5e4b7fff9b843b536b3a42e8
 	public Productos productos;
 	public static List<Productos> productosl = Arrays.asList(Productos.values()); // lista de los tipos de productos
 
@@ -57,17 +41,13 @@ public class Almacen {
 	
 	//CONSTRUCTOR de la clase 'Almacen'
 	public Almacen() {
-<<<<<<< HEAD
 		
 		this.ciudad[29][36] = this.direccionAlmacen;
 		
-=======
->>>>>>> edb663e196d2f0bd5e4b7fff9b843b536b3a42e8
 		Picker p1 = new Picker("Reinaldo","Ramirez",randomID(),19,false,LocalTime.of(8,0,0),LocalTime.of(23,59,0));
 		Picker p2 = new Picker("Sofia", "Arango", randomID(),20, true,LocalTime.of(9,0,0),LocalTime.of(23,0,0));
 		Picker p3 = new Picker("Santiago", "Restrepo", randomID(),22, false,LocalTime.of(8,0,0),LocalTime.of(23,0,0));
 		Picker p4 = new Picker("Valentina", "Velez", randomID(),22, false,LocalTime.of(18,0,0),LocalTime.of(23,0,0));
-<<<<<<< HEAD
 		Picker p5 = new Picker("Jorge", "Castaño", randomID(),22, true,LocalTime.of(8,0,0),LocalTime.of(23,0,0));
 		
 		Conductor c1 = new Conductor("Sebastian", "Ososrio", randomID(), 1, false, LocalTime.of(8, 0,0), LocalTime.of(11, 0, 0));
@@ -75,22 +55,16 @@ public class Almacen {
 		Conductor c3 = new Conductor("Valentin", "Moscada", randomID(), 2, false, LocalTime.of(8, 0, 0), LocalTime.of(16, 0, 0));
 		Conductor c4 = new Conductor("Juan Jose", "Betancur", randomID(), 4, false, LocalTime.of(2, 0,0), LocalTime.of(17, 0, 0));
 		
-=======
-		Picker p5 = new Picker("Jorge", "CastaÃ±o", randomID(),22, true,LocalTime.of(8,0,0),LocalTime.of(23,0,0));
->>>>>>> edb663e196d2f0bd5e4b7fff9b843b536b3a42e8
 		pickers.add(p1);
 		pickers.add(p2);
 		pickers.add(p3);
 		pickers.add(p4);
 		pickers.add(p5);
-<<<<<<< HEAD
 		conductores.add(c1);
 		conductores.add(c2);
 		conductores.add(c3);
 		conductores.add(c4);
 		
-=======
->>>>>>> edb663e196d2f0bd5e4b7fff9b843b536b3a42e8
 		lacteos.add("Leche");
 		lacteos.add("Queso");
 		lacteos.add("Mantequilla");
@@ -109,7 +83,7 @@ public class Almacen {
 		vegetales.add("Cilantro");
 		frutas.add("Manzana");
 		frutas.add("Uvas");
-		frutas.add("PiÃ±a");
+		frutas.add("Piña");
 		frutas.add("Naranja");
 		frutas.add("Pera");
 		frutas.add("Coco");
@@ -152,7 +126,6 @@ public class Almacen {
 	public static void asignarPedido() {
 		Cliente.setPedido(pedido);
 		Cliente.getPedido().estado= Cliente.getPedido().estado.INICIADO;
-<<<<<<< HEAD
 	}
 	
 	//El siguiente método verifica si la dirección del cliente se encuentra en el rango de entrega del Almacen
@@ -173,7 +146,3 @@ public class Almacen {
 	}
 	
 }
-=======
-	}
-}
->>>>>>> edb663e196d2f0bd5e4b7fff9b843b536b3a42e8
