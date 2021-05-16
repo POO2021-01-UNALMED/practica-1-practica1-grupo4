@@ -33,16 +33,22 @@ ENTREGADO: El pedido entra en este estado cuando finalmente llega a la casa del 
 		switch(estado) {
 		case INICIADO:
 			System.out.println("Su pedido se encuentra iniciado");
+			break;
 		case EN_PROCESO:
 			System.out.println("El Picker se encuentra pidiendo sus productos");
+			break;
 		case FINALIZADO:
 			System.out.println("Su pedido se le fue entregado al conductor");
+			break;
 		case EN_RUTA:
 			System.out.println("Su pedido se encuentra en ruta");
+			break;
 		case ENTREGADO:
 			System.out.println("Su pedido ya se le fue entregado");
+			break;
 		default:
 			System.out.println("Su pedido no ha sido iniciado");
+			break;
 		}
 	}
 	

@@ -19,10 +19,12 @@ public class Main {
 		System.out.println(c.getPicker().getNombre());
 		System.out.println(c.getPicker().accion);
 		
-		System.out.println("Escoja una opcion: \n" +"A. Hacer domicilio\n"+"B. Consultar estado de mi domicilio\n" + "C. salir");
+		
 		String opcion;
-		opcion= input.next().toUpperCase();
+		
 		while(true) {
+			System.out.println("Escoja una opcion: \n" +"A. Hacer domicilio\n"+"B. Consultar estado de mi domicilio\n" + "C. salir");
+			opcion= input.next().toUpperCase();
 			switch(opcion) {
 			case "A":
 				while(true) {
@@ -30,15 +32,17 @@ public class Main {
 					for (Productos pro : Almacen.productosl) {
 						System.out.println(pro);
 					}
+					System.out.println("presione V para volver");
 					String categoria = input.next().toUpperCase();
 					switch(categoria) {
 						case "LACTEOS":
+							for (String l : Almacen.lacteos) {
+								System.out.println("Presione " + (Almacen.lacteos.indexOf(l) + 1 )+ "   para seleccionar: " + l);
+								
+							}
+							System.out.println("Presione 0 para continuar");
 							while(true) {
-								for (String l : Almacen.lacteos) {
-									System.out.println("Presione " + (Almacen.lacteos.indexOf(l) + 1 )+ "   para seleccionar: " + l);
-									
-								}
-								System.out.println("Presione 0 para continuar");
+								
 								int seleccion = input.nextInt();
 								switch(seleccion) {
 								case 1:
@@ -55,12 +59,13 @@ public class Main {
 							}
 							continue;
 						case "CARNES":
+							for (String ca : Almacen.carnes) {
+								System.out.println("Presione " + (Almacen.carnes.indexOf(ca) + 1 )+ "   para seleccionar: " + ca);
+								
+							}
+							System.out.println("Presione 0 para continuar");
 							while(true) {
-								for (String ca : Almacen.carnes) {
-									System.out.println("Presione " + (Almacen.carnes.indexOf(ca) + 1 )+ "   para seleccionar: " + ca);
-									
-								}
-								System.out.println("Presione 0 para continuar");
+								
 								int seleccion = input.nextInt();
 								switch(seleccion) {
 								case 1:
@@ -76,12 +81,14 @@ public class Main {
 							}
 							continue;
 						case "VEGETALES":
+							for (String v : Almacen.vegetales) {
+								System.out.println("Presione " + (Almacen.vegetales.indexOf(v) + 1 )+ "   para seleccionar: " + v);
+								
+							}
+							System.out.println("Presione 0 para continuar");
 							while(true) {
-								for (String v : Almacen.vegetales) {
-									System.out.println("Presione " + (Almacen.vegetales.indexOf(v) + 1 )+ "   para seleccionar: " + v);
-									
-								}
-								System.out.println("Presione 0 para continuar");
+								
+								
 								int seleccion = input.nextInt();
 								switch(seleccion) {
 								case 1:
@@ -100,12 +107,14 @@ public class Main {
 							}
 							continue;
 						case "FRUTAS":
+							for (String f : Almacen.frutas) {
+								System.out.println("Presione " + (Almacen.frutas.indexOf(f) + 1 )+ "   para seleccionar: " + f);
+								
+							}
+							System.out.println("Presione 0 para continuar");
 							while(true) {
-								for (String f : Almacen.frutas) {
-									System.out.println("Presione " + (Almacen.frutas.indexOf(f) + 1 )+ "   para seleccionar: " + f);
-									
-								}
-								System.out.println("Presione 0 para continuar");
+								
+								
 								int seleccion = input.nextInt();
 								switch(seleccion) {
 								case 1:
@@ -124,12 +133,14 @@ public class Main {
 							}
 							continue;
 						case "GRANOS":
+							for (String g : Almacen.granos) {
+								System.out.println("Presione " + (Almacen.granos.indexOf(g) + 1 )+ "   para seleccionar: " + g);
+								
+							}
+							System.out.println("Presione 0 para continuar");
 							while(true) {
-								for (String g : Almacen.granos) {
-									System.out.println("Presione " + (Almacen.granos.indexOf(g) + 1 )+ "   para seleccionar: " + g);
-									
-								}
-								System.out.println("Presione 0 para continuar");
+								
+								
 								int seleccion = input.nextInt();
 								switch(seleccion) {
 								case 1:
@@ -145,14 +156,16 @@ public class Main {
 								break;
 							}
 							continue;
-					}
+						case "V":
+							break;	
+						}
 					break;
 					}
 
-					break;
+					continue;
 			case "B":
 				Cliente.ConsultarEstadoPedido();
-				break;
+				continue;
 				
 			case "C":
 				System.out.println("Salir");
