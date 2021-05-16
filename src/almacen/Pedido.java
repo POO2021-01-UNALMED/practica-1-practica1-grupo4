@@ -1,5 +1,6 @@
 package almacen;
 import java.util.ArrayList;
+<<<<<<< HEAD
 
 ///PEDIDO\\\ Se trata de las compras que realiza el cliente en el Almacen
 
@@ -22,6 +23,12 @@ EN_RUTA: El pedido entra en este estado tan pronto como el Conductor empieza su 
 ENTREGADO: El pedido entra en este estado cuando finalmente llega a la casa del Cliente. 
 */
 	public static ArrayList<String>carrito = new ArrayList<>(); //carrito que acomula los productos seleccionados por el cliente
+=======
+public class Pedido {
+public enum estadoPedido{INICIADO,EN_PROCESO,FINALIZADO,EN_RUTA,ENTREGADO};
+public estadoPedido estado;
+public static ArrayList<String>carrito = new ArrayList<>();
+>>>>>>> edb663e196d2f0bd5e4b7fff9b843b536b3a42e8
 	
 	// El siguiente método agrega un nuevo producto al carrito
 	public static void agregarProducto(String producto) {
