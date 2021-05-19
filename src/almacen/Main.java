@@ -4,21 +4,40 @@ import java.util.*;
 
 import almacen.Almacen.Productos;
 
+import java.io.IOException;
 import java.time.*;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		
 		Scanner input = new Scanner(System.in);
 		Almacen a1 = new Almacen();
-		Cliente c = new Cliente("Mateo", "Arias Arias", 1000871372);
+		
+		System.out.println("BIENVENIDO(A)\n\n\nPor favor ingresar los siguientes datos: ");
+		System.out.print("nombre: ");
+		String nombre = input.next().toUpperCase();
+		System.out.print("apellido: ");
+		String apellido = input.next().toUpperCase();
+		System.out.print("numero de identificacion: ");
+		int identificacion = input.nextInt();
+		System.out.print("direccion residencial: ");
+		String direccion = input.next().toUpperCase();
+		
+		
+		Cliente c = new Cliente(nombre, apellido, identificacion, direccion);
+		c.serializarCliente();
+		System.out.println("Tu informacion ha sido guardada!");
+		
+		c = new Cliente();
+		c.deserializarCliente();
+		System.out.println(c.getNombreCompleto());
+		
 		Pedido p1 = new Pedido();
 		Almacen.pedido = p1;
 		c.llamar();
 		System.out.println(c.getPicker().getNombre());
 		System.out.println(c.getPicker().accion);
-		
 		
 		String opcion;
 		

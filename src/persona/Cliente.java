@@ -1,10 +1,14 @@
 package persona;
 import almacen.*;
+import baseDatos.*;
+
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.*;
 
 /// CLIENTE \\\ para nuestro caso será el usuario en cuestión, el que ordena el domicilio y escoge los productos
 
-public class Cliente{
+public class Cliente implements Serializable{
 	
 	//ATRIBUTOS de la clase 'Cliente'
 	
@@ -16,15 +20,20 @@ public class Cliente{
 	private Conductor conductor; // Conductor que entregará el pedido del cliente
 	private static Pedido pedido; // Pedido realizado por el cliente
 	
-	// CONSTRUCTOR para la clase 'Cliente'
 	
-	public Cliente(String nombre, String apellidos, int ID) {
-		this.nombre= nombre;
-		this.apellidos=apellidos;
-		this.ID=ID;
+	public Cliente() {
 		
 	}
 	
+	// CONSTRUCTOR para la clase 'Cliente'
+	
+	public Cliente(String nombre, String apellidos, int ID, String d) {
+		this.nombre= nombre;
+		this.apellidos=apellidos;
+		this.ID=ID;
+		direccion = d;
+		
+	}
 	// el siguiente método llamado generarDireccion(), genera una dirección aleatoria para el cliente en la ciudad.
 	public static int generarDireccion() {
 		 int min = 1000000000;
@@ -70,6 +79,11 @@ public class Cliente{
 	public static Pedido getPedido() {
 		return pedido;
 	}
-	
+	public void serializarCliente() throws IOException {
+		Serializer.serializar(this);
+	}
+	public void deserializarCliente() throws ClassNotFoundException, IOException {
+		Deserializer.deserializar(this);
+	}
 	
 }
