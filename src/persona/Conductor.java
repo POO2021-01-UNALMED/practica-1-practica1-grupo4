@@ -15,7 +15,7 @@ public class Conductor extends Empleados {
 		return (LocalTime.now().isBefore(finTurno) && LocalTime.now().isAfter(comienzoTurno));
 	}
 	
-	// cambia el estado del picker a "ACTIVO" o "INACTIVO" según sea el caso. Está función se usa en el constructor
+	// cambia el estado del conductor a "ACTIVO" o "INACTIVO" según sea el caso. Está función se usa en el constructor
 	public void setStatus() {
 		if (!this.withinRange()) {
 			this.estado = "INACTIVO";
@@ -25,5 +25,10 @@ public class Conductor extends Empleados {
 		}
 	}
 	
-	
+	public boolean disponibleParaAtender() {
+		if (!this.accion && this.estado.equals("ACTIVO")) {
+			return true;
+		}
+		return false;
+	}
 }
