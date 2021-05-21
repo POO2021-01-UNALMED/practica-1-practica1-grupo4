@@ -24,6 +24,8 @@ public class Cliente implements Serializable{
 	
 	// CONSTRUCTOR para la clase 'Cliente'
 	
+	public Cliente() {}
+	
 	public Cliente(String nombre, String apellidos, int ID, String d) {
 		this.nombre= nombre;
 		this.apellidos=apellidos;
@@ -47,6 +49,12 @@ public class Cliente implements Serializable{
 		this.picker.cliente=this;
 		Almacen.asignarPedido();	
 	}
+	
+	
+	public void finalizarCompra() {
+		this.picker.setStatus();	
+	}
+	
 	// el siguiente método le permite al cliente saber el estado de su pedido
 	public static void ConsultarEstadoPedido() {
 		getPedido().consultaPedido();
@@ -81,8 +89,49 @@ public class Cliente implements Serializable{
 	public void serializarCliente() throws IOException {
 		Serializer.serializar(this);
 	}
-	public void deserializarCliente() throws ClassNotFoundException, IOException {
-		Deserializer.deserializar(this);
+	public Cliente deserializarCliente() throws ClassNotFoundException, IOException {
+		return Deserializer.deserializar(this);
 	}
+	
+	
+	public static String getDireccion() {
+		return direccion;
+	}
+
+	public static void setDireccion(String direccion) {
+		Cliente.direccion = direccion;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getApellidos() {
+		return apellidos;
+	}
+
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
+	}
+
+	public void setID(int iD) {
+		ID = iD;
+	}
+
+	public void setConductor(Conductor conductor) {
+		this.conductor = conductor;
+	}
+
+	@Override
+	public String toString() {
+		return "Cliente [nombre=" + nombre + ", apellidos=" + apellidos + "]";
+	}
+	
+
+
 	
 }

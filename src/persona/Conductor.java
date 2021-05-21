@@ -13,7 +13,10 @@ public class Conductor extends Empleados {
 	}
 	public boolean withinRange() {
 		return (LocalTime.now().isBefore(finTurno) && LocalTime.now().isAfter(comienzoTurno));
+		
 	}
+	
+	
 	
 	// cambia el estado del conductor a "ACTIVO" o "INACTIVO" según sea el caso. Está función se usa en el constructor
 	public void setStatus() {

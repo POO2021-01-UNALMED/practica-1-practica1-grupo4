@@ -20,8 +20,9 @@ ENTREGADO: El pedido entra en este estado cuando finalmente llega a la casa del 
 	public static ArrayList<String>carrito = new ArrayList<>(); //carrito que acomula los productos seleccionados por el cliente
 	
 	// El siguiente método agrega un nuevo producto al carrito
-	public static void agregarProducto(String producto) {
-		carrito.add(producto);
+	public static void agregarProducto(Producto producto, int numeroVeces ) {
+		carrito.add(producto.nombre +" "+numeroVeces);
+		producto.cantidad-=numeroVeces;
 	}
 	
 	
