@@ -28,7 +28,6 @@ public class Picker extends Empleados {
 			this.estado = "ACTIVO";
 		}
 	}
-	
 	// determina si el picker está o no disponible para atender a un cliente dependiendo de si se encuentra en una llamada y de si se encuentra "ACTIVO"
 	public boolean disponibleParaAtender() {
 		if (!this.accion && this.estado.equals("ACTIVO")) {
@@ -36,6 +35,7 @@ public class Picker extends Empleados {
 		}
 		return false;
 	}
+	
 	
 	
 }

@@ -14,7 +14,7 @@ import persona.Cliente;
 
 public class Almacen {
 	
-	public String[][] ciudad = new String[50][50]; /* ciudad donde se encuentra el almacen consiste
+	public static String[][] ciudad = new String[50][50]; /* ciudad donde se encuentra el almacen consiste
 	en una matriz de tamaño 50 x 50, donde cada entrada representa un bloque de una ciudad ficticia*/
 	
 	public String direccionAlmacen = "Almacen"; /*La dirección será representada por un String que eventualmente será puesto
@@ -22,11 +22,11 @@ public class Almacen {
 	
 	public enum Productos{lACTEOS, CARNES, VEGETALES, FRUTAS, GRANOS} // Tipos de productos ofrecidos por el almacén
 	public static Pedido pedido; //Pedido perteneciente al cliente en cuestión.
-	public static ArrayList<String> lacteos = new ArrayList<>();// lista de lacteos
-	public static ArrayList<String> carnes = new ArrayList<>();// lista de carnes
-	public static ArrayList<String> vegetales = new ArrayList<>();// lista de vegetales
-	public static ArrayList<String> frutas = new ArrayList<>();// lista de frutas
-	public static ArrayList<String> granos = new ArrayList<>();// lista de granos
+	public static ArrayList<Producto> lacteos = new ArrayList<>();// lista de lacteos
+	public static ArrayList<Producto> carnes = new ArrayList<>();// lista de carnes
+	public static ArrayList<Producto> vegetales = new ArrayList<>();// lista de vegetales
+	public static ArrayList<Producto> frutas = new ArrayList<>();// lista de frutas
+	public static ArrayList<Producto> granos = new ArrayList<>();// lista de granos
 	public static ArrayList<Picker>pickers = new ArrayList<>();// lista de los Pickers del almacén
 	public static ArrayList<Conductor>conductores = new ArrayList<>();// lista de los conductores del almacén 
 	public Productos productos;
@@ -65,34 +65,34 @@ public class Almacen {
 		conductores.add(c3);
 		conductores.add(c4);
 		
-		lacteos.add("Leche");
-		lacteos.add("Queso");
-		lacteos.add("Mantequilla");
-		lacteos.add("Yogurt");
-		lacteos.add("Helado");
-		carnes.add("Res");
-		carnes.add("Pescado");
-		carnes.add("Pollo");
-		carnes.add("Cerdo");
-		vegetales.add("Zanahorias");
-		vegetales.add("Repollo");
-		vegetales.add("Cebolla");
-		vegetales.add("Tomate");
-		vegetales.add("Papa");
-		vegetales.add("Brocoli");
-		vegetales.add("Cilantro");
-		frutas.add("Manzana");
-		frutas.add("Uvas");
-		frutas.add("Piña");
-		frutas.add("Naranja");
-		frutas.add("Pera");
-		frutas.add("Coco");
-		frutas.add("Banana");
-		granos.add("Arroz");
-		granos.add("Arveja");
-		granos.add("Lentejas");
-		granos.add("Garbanzos");
-		granos.add("Maiz");
+		lacteos.add( new Producto("leche", 2000, 50) );
+		lacteos.add(new Producto("Queso", 1500, 50));
+		lacteos.add(new Producto("Mantequilla", 2000, 50));
+		lacteos.add(new Producto("Yogurt", 2000, 50));
+		lacteos.add(new Producto("Helado", 2000, 50));
+		carnes.add(new Producto("Res", 2000, 50));
+		carnes.add(new Producto("Pescado", 2000, 50));
+		carnes.add(new Producto("Pollo", 2000, 50));
+		carnes.add(new Producto("Cerdo", 2000, 50));
+		vegetales.add(new Producto("Zanahorias", 2000, 50));
+		vegetales.add(new Producto("Repollo", 2000, 50));
+		vegetales.add(new Producto("Cebolla", 2000, 50));
+		vegetales.add(new Producto("Tomate", 2000, 50));
+		vegetales.add(new Producto("Papa", 2000, 50));
+		vegetales.add(new Producto("Brocoli", 2000, 50));
+		vegetales.add(new Producto("Cilantro", 2000, 50));
+		frutas.add(new Producto("Manzana", 2000, 50));
+		frutas.add(new Producto("Uvas", 2000, 50));
+		frutas.add(new Producto("Piña", 2000, 50));
+		frutas.add(new Producto("Naranja", 2000, 50));
+		frutas.add(new Producto("Pera", 2000, 50));
+		frutas.add(new Producto("Pera", 2000, 50));
+		frutas.add(new Producto("Banana", 2000, 50));
+		granos.add(new Producto("Arroz", 2000, 50));
+		granos.add(new Producto("Arveja", 2000, 50));
+		granos.add(new Producto("Lentejas", 2000, 50));
+		granos.add(new Producto("Garbanzos", 2000, 50));
+		granos.add(new Producto("Maiz", 2000, 50));
 		
 	}
 	
@@ -131,8 +131,8 @@ public class Almacen {
 	//El siguiente método verifica si la dirección del cliente se encuentra en el rango de entrega del Almacen
 	public Boolean RangoCliente() {
 		Boolean domicilio = false;
-		for(int i = 0; 14 <= i && i <= 40; i++) {
-			for(int j = 0; j >= 10; j++ ) {
+		for(int i = 4; 4 <= i && i < 44; i++) {
+			for(int j = 3; 3 <= j && j < 50; j++ ) {
 				if (ciudad[i][j] == Cliente.direccion) {
 					domicilio = true;
 					break;

@@ -10,22 +10,19 @@ public class Pedido {
 	public estadoPedido estado; //describe el estado del Pedido de la siguiente forma:
 
 /* INICIADO: El pedido entra en este estado tan pronto como el cliente empiece a escoger sus prodcuctos.
-
 EN_PROCESO: El pedido entra en este estado cuando el cliente termina de escoger sus productos y mientras el Picker esté en su labor
 de escoger los productos seleccionados por el cliente.
-
 FINALIZADO: El pedido entra en este estado cuando el Picker termina de empacar los productos, y sale de este estado tan pronto como
 el producto se le es entregado al conductor.
-
 EN_RUTA: El pedido entra en este estado tan pronto como el Conductor empieza su viaje hacia la residencia del Cliente.
-
 ENTREGADO: El pedido entra en este estado cuando finalmente llega a la casa del Cliente. 
 */
 	public static ArrayList<String>carrito = new ArrayList<>(); //carrito que acomula los productos seleccionados por el cliente
 	
 	// El siguiente método agrega un nuevo producto al carrito
-	public static void agregarProducto(String producto) {
-		carrito.add(producto);
+	public static void agregarProducto(Producto producto, int numeroVeces ) {
+		carrito.add(producto.nombre +" "+numeroVeces);
+		producto.cantidad-=numeroVeces;
 	}
 	
 	

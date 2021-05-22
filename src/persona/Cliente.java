@@ -17,28 +17,29 @@ public class Cliente implements Serializable{
 	private int ID;  // número de identificación del cliente
 	public static String direccion; // dirección del cliente
 	private Picker picker; // Picker asignado al cliente para que escoja sus productos
-	private Conductor conductor; // Conductor que entregará el pedido del cliente
+	private static Conductor conductor; // Conductor que entregará el pedido del cliente
 	private static Pedido pedido; // Pedido realizado por el cliente
 	
-	
-	public Cliente() {
-		
-	}
+
 	
 	// CONSTRUCTOR para la clase 'Cliente'
+	
+	public Cliente() {}
 	
 	public Cliente(String nombre, String apellidos, int ID, String d) {
 		this.nombre= nombre;
 		this.apellidos=apellidos;
 		this.ID=ID;
 		direccion = d;
+		generarDireccion();
 		
 	}
 	// el siguiente método llamado generarDireccion(), genera una dirección aleatoria para el cliente en la ciudad.
-	public static int generarDireccion() {
-		 int min = 1000000000;
-		 int max = 2000000000;
-		 return (int)Math.floor(Math.random()*(max - min + 1) + min);
+	public static  void generarDireccion() {
+		
+		int x= (int)Math.floor(Math.random()*50);
+		int y=(int)Math.floor(Math.random()*50);
+		Almacen.ciudad [x][y]= direccion;
 	}
 	
 	/*el siguiente método llamar(), representa el instante en el que el usuario comienza a interactuar con el almacen,
@@ -48,6 +49,12 @@ public class Cliente implements Serializable{
 		this.picker.cliente=this;
 		Almacen.asignarPedido();	
 	}
+	
+	
+	public void finalizarCompra() {
+		this.picker.setStatus();	
+	}
+	
 	// el siguiente método le permite al cliente saber el estado de su pedido
 	public static void ConsultarEstadoPedido() {
 		getPedido().consultaPedido();
@@ -82,8 +89,49 @@ public class Cliente implements Serializable{
 	public void serializarCliente() throws IOException {
 		Serializer.serializar(this);
 	}
-	public void deserializarCliente() throws ClassNotFoundException, IOException {
-		Deserializer.deserializar(this);
+	public Cliente deserializarCliente() throws ClassNotFoundException, IOException {
+		return Deserializer.deserializar(this);
 	}
+	
+	
+	public static String getDireccion() {
+		return direccion;
+	}
+
+	public static void setDireccion(String direccion) {
+		Cliente.direccion = direccion;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getApellidos() {
+		return apellidos;
+	}
+
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
+	}
+
+	public void setID(int iD) {
+		ID = iD;
+	}
+
+	public static void setConductor(Conductor c) {
+		conductor = c;
+	}
+
+	@Override
+	public String toString() {
+		return "Cliente [nombre=" + nombre + ", apellidos=" + apellidos + "]";
+	}
+	
+
+
 	
 }

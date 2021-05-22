@@ -10,12 +10,15 @@ import persona.Cliente;
 
 public class Deserializer{
 	
-	public static void deserializar(Cliente cliente) throws IOException, ClassNotFoundException {
+	public static Cliente deserializar(Cliente cliente) throws IOException, ClassNotFoundException {
+		//FileInputStream fileIn = new FileInputStream(System.getProperty("user.dir") + "/baseDatos/temp/clienteInfo.ser");
 		FileInputStream fileIn = new FileInputStream("src\\baseDatos\\temp\\clienteInfo.ser");
 		ObjectInputStream in = new ObjectInputStream(fileIn);
 		cliente = (Cliente) in.readObject();
 		in.close();
 		fileIn.close();
+		return cliente;
+				
 	}
 	
 }
