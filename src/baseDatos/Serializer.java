@@ -16,7 +16,7 @@ public class Serializer {
 	public static void serializar(Cliente cliente) throws IOException {
 		/*FileOutputStream fileOut = new FileOutputStream(
 		System.getProperty("user.dir") + "/baseDatos/temp/clienteInfo.ser");*/
-		FileOutputStream fileOut = new FileOutputStream("baseDatos\\temp\\clienteInfo.ser");
+		FileOutputStream fileOut = new FileOutputStream("src\\baseDatos\\temp\\clienteInfo.ser");
 		ObjectOutputStream out = new ObjectOutputStream(fileOut);
 		out.writeObject(cliente);
 		out.close();
@@ -25,7 +25,7 @@ public class Serializer {
 
 	public static boolean archivoEsVacio() throws IOException {
 		//String ruta = System.getProperty("user.dir") + "/baseDatos/temp/clienteInfo.ser";
-		String ruta = "baseDatos\\temp\\clienteInfo.ser";
+		String ruta = "src\\baseDatos\\temp\\clienteInfo.ser";
 		File file = new File(ruta);
 		if (file.exists()) {
 			BufferedReader br = new BufferedReader(new FileReader(ruta));
