@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Pedido {
 
-
+	public static int total=0; 
 	public enum estadoPedido{INICIADO,EN_PROCESO,FINALIZADO,EN_RUTA,ENTREGADO}; 
 	public estadoPedido estado; //describe el estado del Pedido de la siguiente forma:
 
@@ -21,8 +21,18 @@ ENTREGADO: El pedido entra en este estado cuando finalmente llega a la casa del 
 	
 	// El siguiente método agrega un nuevo producto al carrito
 	public static void agregarProducto(Producto producto, int numeroVeces ) {
-		carrito.add(producto.nombre +" "+numeroVeces);
+		carrito.add(producto.nombre +" "+numeroVeces + " $"+ (numeroVeces*producto.precio));
 		producto.cantidad-=numeroVeces;
+		total+= producto.precio*numeroVeces;
+	}
+	
+	public void mostrarFactura() {
+		System.out.println("-----------------------------");
+		for (String p : carrito) {
+			System.out.println(p);
+		}
+		System.out.println("total: $"+total);
+		System.out.println("-----------------------------");
 	}
 	
 	

@@ -34,6 +34,10 @@ public class Cliente implements Serializable{
 		generarDireccion();
 		
 	}
+	
+	public void ingresarDireccion(int x ,int y) {
+		Almacen.ciudad [x][y]= direccion;		
+	}
 	// el siguiente método llamado generarDireccion(), genera una dirección aleatoria para el cliente en la ciudad.
 	public static  void generarDireccion() {
 		
@@ -125,7 +129,12 @@ public class Cliente implements Serializable{
 	public static void setConductor(Conductor c) {
 		conductor = c;
 	}
-
+	
+	
+	
+	public static int getTotalPrecio() {
+		return pedido.total;
+	}
 	@Override
 	public String toString() {
 		return "Cliente [nombre=" + nombre + ", apellidos=" + apellidos + "]";
