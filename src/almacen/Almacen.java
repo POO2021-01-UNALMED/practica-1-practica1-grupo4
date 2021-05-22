@@ -9,44 +9,30 @@ import persona.Picker;
 import persona.Conductor;
 import persona.Cliente;
 
-///ALMACEN\\\ establecimiento comercial en cuestiÃ³n.
+///ALMACEN\\\ establecimiento comercial en cuestión.
 
 
 public class Almacen {
 	
 	public static String[][] ciudad = new String[50][50]; /* ciudad donde se encuentra el almacen consiste
-<<<<<<< HEAD
 	en una matriz de tamaño 50 x 50, donde cada entrada representa un bloque de una ciudad ficticia*/
-=======
-	en una matriz de tamaÃ±o 50 x 50, donde cada entrada representa un bloque de una ciudad ficticia*/
->>>>>>> 6e0909946f2d364dcf39dc17d18d7d0cd3a9f045
 	
-	public String direccionAlmacen = "Almacen"; /*La direcciÃ³n serÃ¡ representada por un String que eventualmente serÃ¡ puesto
+	public String direccionAlmacen = "Almacen"; /*La dirección será representada por un String que eventualmente será puesto
 	 en uno de los bloques de la matriz*/
 	
-<<<<<<< HEAD
 	public enum Productos{lACTEOS, CARNES, VEGETALES, FRUTAS, GRANOS} // Tipos de productos ofrecidos por el almacén
 	public static Pedido pedido; //Pedido perteneciente al cliente en cuestión.
-=======
-	public enum Productos{lACTEOS, CARNES, VEGETALES, FRUTAS, GRANOS} // Tipos de productos ofrecidos por el almacÃ©n
-	public static Pedido pedido; //Pedido perteneciente al cliente en cuestiÃ³n.
->>>>>>> 6e0909946f2d364dcf39dc17d18d7d0cd3a9f045
 	public static ArrayList<Producto> lacteos = new ArrayList<>();// lista de lacteos
 	public static ArrayList<Producto> carnes = new ArrayList<>();// lista de carnes
 	public static ArrayList<Producto> vegetales = new ArrayList<>();// lista de vegetales
 	public static ArrayList<Producto> frutas = new ArrayList<>();// lista de frutas
 	public static ArrayList<Producto> granos = new ArrayList<>();// lista de granos
-<<<<<<< HEAD
 	public static ArrayList<Picker>pickers = new ArrayList<>();// lista de los Pickers del almacén
 	public static ArrayList<Conductor>conductores = new ArrayList<>();// lista de los conductores del almacén 
-=======
-	public static ArrayList<Picker>pickers = new ArrayList<>();// lista de los Pickers del almacÃ©n
-	public static ArrayList<Conductor>conductores = new ArrayList<>();// lista de los conductores del almacÃ©n 
->>>>>>> 6e0909946f2d364dcf39dc17d18d7d0cd3a9f045
 	public Productos productos;
 	public static List<Productos> productosl = Arrays.asList(Productos.values()); // lista de los tipos de productos
 
-	//el siguiente mÃ©todo genera un nÃºmero de identificaciÃ³n aleatorio para el empleado
+	//el siguiente método genera un número de identificación aleatorio para el empleado
 	public static int randomID() {
 		 int min = 1000000000;
 		 int max = 2000000000;
@@ -62,7 +48,7 @@ public class Almacen {
 		Picker p2 = new Picker("Sofia", "Arango", randomID(),20, true,LocalTime.of(9,0,0),LocalTime.of(23,0,0));
 		Picker p3 = new Picker("Santiago", "Restrepo", randomID(),22, false,LocalTime.of(8,0,0),LocalTime.of(23,0,0));
 		Picker p4 = new Picker("Valentina", "Velez", randomID(),22, false,LocalTime.of(18,0,0),LocalTime.of(23,0,0));
-		Picker p5 = new Picker("Jorge", "CastaÃ±o", randomID(),22, true,LocalTime.of(8,0,0),LocalTime.of(23,0,0));
+		Picker p5 = new Picker("Jorge", "Castaño", randomID(),22, true,LocalTime.of(8,0,0),LocalTime.of(23,0,0));
 		
 		Conductor c1 = new Conductor("Sebastian", "Ososrio", randomID(), 1, false, LocalTime.of(8, 0,0), LocalTime.of(11, 0, 0));
 		Conductor c2 = new Conductor("Sonia", "Ardila", randomID(), 11, false, LocalTime.of(10, 0,0), LocalTime.of(14, 0, 0));
@@ -97,11 +83,7 @@ public class Almacen {
 		vegetales.add(new Producto("Cilantro", 2000, 50));
 		frutas.add(new Producto("Manzana", 2000, 50));
 		frutas.add(new Producto("Uvas", 2000, 50));
-<<<<<<< HEAD
 		frutas.add(new Producto("Piña", 2000, 50));
-=======
-		frutas.add(new Producto("PiÃ±a", 2000, 50));
->>>>>>> 6e0909946f2d364dcf39dc17d18d7d0cd3a9f045
 		frutas.add(new Producto("Naranja", 2000, 50));
 		frutas.add(new Producto("Pera", 2000, 50));
 		frutas.add(new Producto("Pera", 2000, 50));
@@ -114,7 +96,7 @@ public class Almacen {
 		
 	}
 	
-	//El siguiente mÃ©todo asigna un Picker disponible al cliente
+	//El siguiente método asigna un Picker disponible al cliente
 	public static Picker randomPicker() {
 		
 		int index = (int)(Math.random()*pickers.size());
@@ -140,13 +122,13 @@ public class Almacen {
 		
 	}
 	
-	//El siguiente mÃ©todo asigna el pedido al cliente
+	//El siguiente método asigna el pedido al cliente
 	public static void asignarPedido() {
 		Cliente.setPedido(pedido);
 		Cliente.getPedido().estado= Cliente.getPedido().estado.INICIADO;
 	}
 	
-	//El siguiente mÃ©todo verifica si la direcciÃ³n del cliente se encuentra en el rango de entrega del Almacen
+	//El siguiente método verifica si la dirección del cliente se encuentra en el rango de entrega del Almacen
 	public Boolean RangoCliente() {
 		Boolean domicilio = false;
 		for(int i = 4; 4 <= i && i < 44; i++) {
