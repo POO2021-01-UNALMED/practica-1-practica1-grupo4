@@ -13,4 +13,9 @@ public class Producto {
 	
 	
 	
+<<<<<<< HEAD
+=======
+	
+	
+>>>>>>> 6e0909946f2d364dcf39dc17d18d7d0cd3a9f045
 }

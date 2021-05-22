@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.*;
 
-/// CLIENTE \\\ para nuestro caso ser· el usuario en cuestiÛn, el que ordena el domicilio y escoge los productos
+/// CLIENTE \\\ para nuestro caso ser√° el usuario en cuesti√≥n, el que ordena el domicilio y escoge los productos
 
 public class Cliente implements Serializable{
 	
@@ -14,10 +14,14 @@ public class Cliente implements Serializable{
 	
 	private String nombre; // nombre del cliente
 	private String apellidos; // apellidos del cliente
-	private int ID;  // n˙mero de identificaciÛn del cliente
-	public static String direccion; // direcciÛn del cliente
+	private int ID;  // n√∫mero de identificaci√≥n del cliente
+	public static String direccion; // direcci√≥n del cliente
 	private Picker picker; // Picker asignado al cliente para que escoja sus productos
+<<<<<<< HEAD
 	private static Conductor conductor; // Conductor que entregar· el pedido del cliente
+=======
+	private Conductor conductor; // Conductor que entregar√° el pedido del cliente
+>>>>>>> 6e0909946f2d364dcf39dc17d18d7d0cd3a9f045
 	private static Pedido pedido; // Pedido realizado por el cliente
 	
 
@@ -34,7 +38,11 @@ public class Cliente implements Serializable{
 		generarDireccion();
 		
 	}
+<<<<<<< HEAD
 	// el siguiente mÈtodo llamado generarDireccion(), genera una direcciÛn aleatoria para el cliente en la ciudad.
+=======
+	// el siguiente m√©todo llamado generarDireccion(), genera una direcci√≥n aleatoria para el cliente en la ciudad.
+>>>>>>> 6e0909946f2d364dcf39dc17d18d7d0cd3a9f045
 	public static  void generarDireccion() {
 		
 		int x= (int)Math.floor(Math.random()*50);
@@ -42,7 +50,7 @@ public class Cliente implements Serializable{
 		Almacen.ciudad [x][y]= direccion;
 	}
 	
-	/*el siguiente mÈtodo llamar(), representa el instante en el que el usuario comienza a interactuar con el almacen,
+	/*el siguiente m√©todo llamar(), representa el instante en el que el usuario comienza a interactuar con el almacen,
 	 la idea es asignarle un Picker y un pedido para que comience a escoger los productos que desea*/
 	public void llamar() {
 		this.picker = Almacen.randomPicker();
@@ -55,31 +63,35 @@ public class Cliente implements Serializable{
 		this.picker.setStatus();	
 	}
 	
+<<<<<<< HEAD
 	// el siguiente mÈtodo le permite al cliente saber el estado de su pedido
+=======
+	// el siguiente m√©todo le permite al cliente saber el estado de su pedido
+>>>>>>> 6e0909946f2d364dcf39dc17d18d7d0cd3a9f045
 	public static void ConsultarEstadoPedido() {
 		getPedido().consultaPedido();
 	}
-	// el siguiente mÈtodo retornar· a travÈs de un getter los nombres y apellidos del cliente
+	// el siguiente m√©todo retornar√° a trav√©s de un getter los nombres y apellidos del cliente
 	public String getNombreCompleto() {
 		return this.nombre + " " + this.apellidos;
 	}
 	
-	// el siguiente mÈtodo retornar· a travÈs de un getter el n˙mero de identificaciÛn del cliente
+	// el siguiente m√©todo retornar√° a trav√©s de un getter el n√∫mero de identificaci√≥n del cliente
 	public int getID() {
 		return this.ID;
 	}
 	
-	// el siguiente mÈtodo retornar· a travÈs de un getter el Picker asociado al cliente
+	// el siguiente m√©todo retornar√° a trav√©s de un getter el Picker asociado al cliente
 	public Picker getPicker() {
 		return this.picker;
 	}
 	
-	// el siguiente mÈtodo retornar· a travÈs de un getter el Conductor asosciado al cliente
+	// el siguiente m√©todo retornar√° a trav√©s de un getter el Conductor asosciado al cliente
 	public Conductor getConductor() {
 		return this.conductor;
 	}
 	
-	// Los siguientes mÈtodos son un setter y getter respectivamente para el atributo de Pedido
+	// Los siguientes m√©todos son un setter y getter respectivamente para el atributo de Pedido
 	public static void setPedido(Pedido p) {
 		pedido = p;
 	}
@@ -122,8 +134,13 @@ public class Cliente implements Serializable{
 		ID = iD;
 	}
 
+<<<<<<< HEAD
 	public static void setConductor(Conductor c) {
 		conductor = c;
+=======
+	public void setConductor(Conductor conductor) {
+		this.conductor = conductor;
+>>>>>>> 6e0909946f2d364dcf39dc17d18d7d0cd3a9f045
 	}
 
 	@Override
@@ -134,4 +151,8 @@ public class Cliente implements Serializable{
 
 
 	
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 6e0909946f2d364dcf39dc17d18d7d0cd3a9f045

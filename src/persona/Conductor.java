@@ -18,7 +18,11 @@ public class Conductor extends Empleados {
 	
 	
 	
+<<<<<<< HEAD
 	// cambia el estado del conductor a "ACTIVO" o "INACTIVO" según sea el caso. Está función se usa en el constructor
+=======
+	// cambia el estado del conductor a "ACTIVO" o "INACTIVO" segÃºn sea el caso. EstÃ¡ funciÃ³n se usa en el constructor
+>>>>>>> 6e0909946f2d364dcf39dc17d18d7d0cd3a9f045
 	public void setStatus() {
 		if (!this.withinRange()) {
 			this.estado = "INACTIVO";

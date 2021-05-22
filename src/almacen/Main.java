@@ -56,7 +56,11 @@ public class Main {
 			switch (opcion) {
 			case "A":
 				while (true) {
+<<<<<<< HEAD
 					System.out.println("Seleccionar Categoría");
+=======
+					System.out.println("Seleccionar CategorÃ­a");
+>>>>>>> 6e0909946f2d364dcf39dc17d18d7d0cd3a9f045
 					for (Productos pro : Almacen.productosl) {
 						System.out.println(pro);
 					}
@@ -64,6 +68,10 @@ public class Main {
 					String categoria = input.next().toUpperCase();
 					switch (categoria) {
 					case "LACTEOS":
+<<<<<<< HEAD
+=======
+						System.out.println("seleccione productos y escriba la cantidad");
+>>>>>>> 6e0909946f2d364dcf39dc17d18d7d0cd3a9f045
 						for (Producto l : Almacen.lacteos) {
 							System.out.println(
 									"Presione " + (Almacen.lacteos.indexOf(l) + 1) + "   para seleccionar: " + l.nombre);
@@ -77,10 +85,15 @@ public class Main {
 							case 3:
 							case 4:
 							case 5:
+<<<<<<< HEAD
 								System.out.println("escriba la cantidad de " + Almacen.lacteos.get(seleccion - 1).nombre);
 								int cantidad = input.nextInt();
 								Pedido.agregarProducto(Almacen.lacteos.get(seleccion - 1),cantidad);
 								System.out.println("Por favor continue con la seleccion");
+=======
+								int cantidad = input.nextInt();
+								Pedido.agregarProducto(Almacen.lacteos.get(seleccion - 1),cantidad);
+>>>>>>> 6e0909946f2d364dcf39dc17d18d7d0cd3a9f045
 								continue;
 							default:
 								break;
@@ -208,6 +221,7 @@ public class Main {
 
 			case "C":
 				c.finalizarCompra();
+<<<<<<< HEAD
 				Cliente.getPedido().estado = Cliente.getPedido().estado.EN_PROCESO;
 				// agregar timer para estado en proceso
 				Timer timer = new Timer();
@@ -235,10 +249,17 @@ public class Main {
 				};
 				timer.schedule(task3, 24000);
 				
+=======
+				// agregar timer para estado en proceso
+>>>>>>> 6e0909946f2d364dcf39dc17d18d7d0cd3a9f045
 				// luego del timer se asigna un conductor aleatorio 
 				continue;
 			case "D":
 				System.out.println("Salir");
+<<<<<<< HEAD
+=======
+				Cliente.getPedido().estado = Cliente.getPedido().estado.EN_PROCESO;
+>>>>>>> 6e0909946f2d364dcf39dc17d18d7d0cd3a9f045
 				break;
 				
 			}
