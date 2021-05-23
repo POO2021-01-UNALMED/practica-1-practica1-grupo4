@@ -1,4 +1,6 @@
 package almacen;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 ///PEDIDO\\\ Se trata de las compras que realiza el cliente en el Almacen
@@ -26,15 +28,34 @@ ENTREGADO: El pedido entra en este estado cuando finalmente llega a la casa del 
 		total+= producto.precio*numeroVeces;
 	}
 	
-	public void mostrarFactura() {
+	/*public void mostrarFactura() {
+		
+		DateTimeFormatter f = DateTimeFormatter.ofPattern("h:mm:ss");
+		
 		System.out.println("-----------------------------");
+		System.out.println();
+		System.out.println(LocalDate.now());
+		System.out.println(LocalTime.now().format(f));
+		System.out.println();
+		
 		for (String p : carrito) {
 			System.out.println(p);
 		}
+		
+		System.out.println();
 		System.out.println("total: $"+total);
 		System.out.println("-----------------------------");
-	}
+	}*/
 	
+	public String mostrarFactura2() {
+		DateTimeFormatter f = DateTimeFormatter.ofPattern("h:mm:ss");
+		String lista = "";
+		for (String p : carrito) {
+			lista += p + "\n";
+		}
+		return "-----------------------------\n\n"+LocalDate.now()+"\n"+LocalTime.now().format(f)+
+				"\n\n"+lista+"\n"+"total: $"+total+"\n"+"-----------------------------";
+	}
 	
 	public void consultaPedido() {
 		switch(estado) {

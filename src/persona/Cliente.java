@@ -12,6 +12,7 @@ public class Cliente implements Serializable{
 	
 	//ATRIBUTOS de la clase 'Cliente'
 	
+	public ArrayList<String> historicoRecibos = new ArrayList<>();
 	private String nombre; // nombre del cliente
 	private String apellidos; // apellidos del cliente
 	private int ID;  // número de identificación del cliente
@@ -139,7 +140,9 @@ public class Cliente implements Serializable{
 	public String toString() {
 		return "Cliente [nombre=" + nombre + ", apellidos=" + apellidos + "]";
 	}
-	
+	public void agregarRecibo(String recibo) {
+		this.historicoRecibos.add(recibo);
+	}
 
 
 	

@@ -223,8 +223,9 @@ public class Main {
 
 			case "C":
 				c.finalizarCompra();
+				System.out.println(Cliente.getPedido().mostrarFactura2());
 				Cliente.getPedido().estado = Cliente.getPedido().estado.EN_PROCESO;
-				// agregar timer para estado en proceso
+				
 				Timer timer = new Timer();
 
 				TimerTask task = new TimerTask() {
@@ -250,11 +251,11 @@ public class Main {
 				};
 				timer.schedule(task3, 24000);
 
-				// luego del timer se asigna un conductor aleatorio
 				continue;
 			case "D":
-				Cliente.getPedido().mostrarFactura();
 				System.out.println("Salir");
+				c.agregarRecibo(Cliente.getPedido().mostrarFactura2());
+				//System.out.println(c.historicoRecibos.get(0));
 				break;
 
 			}
