@@ -146,13 +146,16 @@ public class Cliente implements Serializable{
 
 	public String infoEmpleado(int opcion) {
 		String h= "";
+		Empleados empleado;
 		switch (opcion) {
 		case 1:
-			h= "Nombre del picker : " +this.picker.getNombre() + " "+ this.picker.getApellidos()+"\nIdentificacion picker :"+ this.picker.getID();
+			empleado = this.picker;
+			h =  "Nombre del picker : " + empleado.getNombre() + " "+ empleado.getApellidos()+"\nIdentificacion picker :"+ empleado.getID();
 			break;
 			
 		case 2:
-			h= "Nombre del conductor : " +conductor.getNombre() + " "+ conductor.getApellidos()+"\nIdentificacion conductor :"+ conductor.getID();
+			empleado = conductor;
+			h= "Nombre del conductor : " + empleado.getNombre() + " "+ empleado.getApellidos()+"\nIdentificacion conductor :"+ empleado.getID();
 			break;
 		}
 		return h;
