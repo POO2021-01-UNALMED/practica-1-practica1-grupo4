@@ -52,7 +52,7 @@ public class Main {
 
 		while (true) {
 			System.out.println("Escoja una opcion: \n" + "A. Hacer domicilio\n"
-					+ "B. Consultar estado de mi domicilio\n" + "C. finalizar compra\n" + "D. salir ");
+					+ "B. Consultas\n" + "C. finalizar compra\n" + "D. salir ");
 			opcion = input.next().toUpperCase();
 			switch (opcion) {
 			case "A":
@@ -218,7 +218,31 @@ public class Main {
 
 				continue;
 			case "B":
-				Cliente.ConsultarEstadoPedido();
+				while (true) {
+					System.out.println("¿qué tipo de consulta desea realizar?\n\na) Consultar estado de mi domicilio\nb) Consultar informacion de mis aistentes"
+							+ "\nc) volver");
+					String seleccion = input.next().toLowerCase();
+					switch (seleccion) {
+					case "a":
+						Cliente.ConsultarEstadoPedido();
+						continue;
+					case "b":
+						System.out.println("¿Sobre quién desea consultar?");
+						while (true) {
+							System.out.println("1) Informacion del Picker\n2) Informacion del Conductor\npresione 0 para regresar");
+							int empleado = input.nextInt();
+							if (empleado == 0) {
+								break;
+							}
+							System.out.println(c.infoEmpleado(empleado));;
+						}
+						continue;
+					case "c":
+						break;
+					}
+					break;
+				}
+	
 				continue;
 
 			case "C":
@@ -231,7 +255,6 @@ public class Main {
 				TimerTask task = new TimerTask() {
 					public void run() {
 						Cliente.getPedido().estado = Cliente.getPedido().estado.ENTREGADO;
-						Cliente.setConductor(Almacen.randomConductor());
 
 					}
 				};
@@ -240,6 +263,7 @@ public class Main {
 				TimerTask task2 = new TimerTask() {
 					public void run() {
 						Cliente.getPedido().estado = Cliente.getPedido().estado.FINALIZADO;
+						Cliente.setConductor(Almacen.randomConductor());
 					}
 				};
 				timer.schedule(task2, 15000);

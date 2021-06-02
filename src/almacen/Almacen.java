@@ -50,10 +50,10 @@ public class Almacen {
 		Picker p4 = new Picker("Valentina", "Velez", randomID(),22, false,LocalTime.of(18,0,0),LocalTime.of(23,0,0));
 		Picker p5 = new Picker("Jorge", "Castaño", randomID(),22, true,LocalTime.of(8,0,0),LocalTime.of(23,0,0));
 		
-		Conductor c1 = new Conductor("Sebastian", "Ososrio", randomID(), 1, false, LocalTime.of(8, 0,0), LocalTime.of(11, 0, 0));
-		Conductor c2 = new Conductor("Sonia", "Ardila", randomID(), 11, false, LocalTime.of(10, 0,0), LocalTime.of(14, 0, 0));
-		Conductor c3 = new Conductor("Valentin", "Moscada", randomID(), 2, false, LocalTime.of(8, 0, 0), LocalTime.of(16, 0, 0));
-		Conductor c4 = new Conductor("Juan Jose", "Betancur", randomID(), 4, false, LocalTime.of(2, 0,0), LocalTime.of(17, 0, 0));
+		Conductor c1 = new Conductor("Sebastian", "Ososrio", randomID(), 1, false, LocalTime.of(8, 0,0), LocalTime.of(23, 0, 0));
+		Conductor c2 = new Conductor("Sonia", "Ardila", randomID(), 11, false, LocalTime.of(10, 0,0), LocalTime.of(23, 0, 0));
+		Conductor c3 = new Conductor("Valentin", "Moscada", randomID(), 2, false, LocalTime.of(8, 0, 0), LocalTime.of(23, 0, 0));
+		Conductor c4 = new Conductor("Juan Jose", "Betancur", randomID(), 4, false, LocalTime.of(2, 0,0), LocalTime.of(23, 0, 0));
 		
 		pickers.add(p1);
 		pickers.add(p2);
