@@ -1,12 +1,13 @@
 package persona;
 
+import java.io.Serializable;
 import java.time.LocalTime;
 
-public abstract class Empleados {
-	private String nombre;
-	private String apellidos;
-	private int ID;
-	private int artefacto;
+public abstract class Empleados implements Serializable{
+	protected String nombre;
+	protected String apellidos;
+	protected int ID;
+	protected int artefacto;
 	public boolean accion;
 	public String estado;
 	public LocalTime comienzoTurno;

@@ -13,9 +13,12 @@ import persona.Cliente;
 
 public class Serializer {
 
-	public static void serializar(Cliente cliente) throws IOException {
-		/*FileOutputStream fileOut = new FileOutputStream(
-		System.getProperty("user.dir") + "/baseDatos/temp/clienteInfo.ser");*/
+	public static void serializar(Cliente cliente) throws IOException{
+		String ruta = "src\\baseDatos\\temp\\clienteInfo.ser";
+		File file = new File(ruta);
+		if (file.exists()) {
+			file.delete();
+		}
 		FileOutputStream fileOut = new FileOutputStream("src\\baseDatos\\temp\\clienteInfo.ser");
 		ObjectOutputStream out = new ObjectOutputStream(fileOut);
 		out.writeObject(cliente);

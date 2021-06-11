@@ -20,5 +20,4 @@ public class Deserializer{
 		return cliente;
 				
 	}
-	
 }

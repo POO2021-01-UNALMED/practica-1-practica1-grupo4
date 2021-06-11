@@ -160,4 +160,11 @@ public class Cliente implements Serializable{
 		}
 		return h;
 	}
+	public String consultarMisReciblos() {
+		String r = "";
+		for(String recibo : historicoRecibos) {
+			r += recibo + "\n";
+		}
+		return r;
+	}
 }

@@ -1,6 +1,7 @@
 package persona;
+import java.io.Serializable;
 import java.time.LocalTime;
-public class Conductor extends Empleados {
+public class Conductor extends Empleados implements Serializable {
 	
 	public Picker picker;
 	

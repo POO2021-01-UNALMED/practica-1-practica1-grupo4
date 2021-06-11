@@ -1,9 +1,10 @@
 package persona;
+import java.io.Serializable;
 import java.time.*;
 import java.util.ArrayList;
 
 
-public class Picker extends Empleados {
+public class Picker extends Empleados implements Serializable {
 
 	 public Cliente cliente;
 	

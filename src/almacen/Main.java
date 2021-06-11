@@ -5,6 +5,7 @@ import java.util.*;
 
 import almacen.Almacen.Productos;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 import java.time.*;
@@ -14,12 +15,16 @@ import baseDatos.*;
 public class Main {
 
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
+		
 		Scanner input = new Scanner(System.in);
+		
 		Almacen a1 = new Almacen();
 		Cliente c = new Cliente();
 
 		if (Serializer.archivoEsVacio()) {
+			
 			System.out.println("BIENVENIDO(A)\n\n\nPor favor ingresar los siguientes datos: ");
+			
 			System.out.print("nombre: ");
 			String nombre = input.next().toUpperCase();
 			System.out.print("apellido: ");
@@ -28,18 +33,22 @@ public class Main {
 			int identificacion = input.nextInt();
 			System.out.print("direccion residencial: ");
 			String direccion = input.next().toUpperCase();
+			
 			c = new Cliente(nombre, apellido, identificacion, direccion);
+			
 			if (!a1.RangoCliente()) {
 				System.out.println("lastimosamente no podemos hacer el domicilio por falta de cobertura.");
 				System.exit(0);
 			}
-			c.serializarCliente();
+			
 			System.out.println("Tu informacion ha sido guardada!");
+			
 			Pedido p1 = new Pedido();
 			Almacen.pedido = p1;
 			c.llamar();
 
 		} else {
+			
 			c = c.deserializarCliente();
 			Pedido p1 = new Pedido();
 			Almacen.pedido = p1;
@@ -219,8 +228,8 @@ public class Main {
 				continue;
 			case "B":
 				while (true) {
-					System.out.println("¿qué tipo de consulta desea realizar?\n\na) Consultar estado de mi domicilio\nb) Consultar informacion de mis aistentes"
-							+ "\nc) volver");
+					System.out.println("¿qué tipo de consulta desea realizar?\n\nA. Consultar estado de mi domicilio\nB. Consultar informacion de mis aistentes"
+							+ "\nC. Consultar mis recibos\nD. volver");
 					String seleccion = input.next().toLowerCase();
 					switch (seleccion) {
 					case "a":
@@ -238,6 +247,8 @@ public class Main {
 						}
 						continue;
 					case "c":
+						System.out.println(c.consultarMisReciblos());
+					case "d":
 						break;
 					}
 					break;
@@ -246,45 +257,58 @@ public class Main {
 				continue;
 
 			case "C":
-				c.finalizarCompra();
-				System.out.println(Cliente.getPedido().mostrarFactura2());
-				Cliente.getPedido().estado = Cliente.getPedido().estado.EN_PROCESO;
+				if (Cliente.getPedido().carrito.size() != 0) {
+					System.out.println(Cliente.getPedido().mostrarFactura2());
+					c.finalizarCompra();
+					Cliente.getPedido().estado = Cliente.getPedido().estado.EN_PROCESO;
+					
+					Timer timer = new Timer();
+
+					TimerTask task = new TimerTask() {
+						public void run() {
+							Cliente.getPedido().estado = Cliente.getPedido().estado.ENTREGADO;
+
+						}
+					};
+					timer.schedule(task, 60000);
+
+					TimerTask task2 = new TimerTask() {
+						public void run() {
+							Cliente.getPedido().estado = Cliente.getPedido().estado.FINALIZADO;
+							Cliente.setConductor(Almacen.randomConductor());
+						}
+					};
+					timer.schedule(task2, 15000);
+
+					TimerTask task3 = new TimerTask() {
+						public void run() {
+							Cliente.getPedido().estado = Cliente.getPedido().estado.EN_RUTA;
+						}
+					};
+					timer.schedule(task3, 24000);
+				}
+				else {
+					System.out.println("Aun no ha hecho una compra");
+				}
 				
-				Timer timer = new Timer();
-
-				TimerTask task = new TimerTask() {
-					public void run() {
-						Cliente.getPedido().estado = Cliente.getPedido().estado.ENTREGADO;
-
-					}
-				};
-				timer.schedule(task, 60000);
-
-				TimerTask task2 = new TimerTask() {
-					public void run() {
-						Cliente.getPedido().estado = Cliente.getPedido().estado.FINALIZADO;
-						Cliente.setConductor(Almacen.randomConductor());
-					}
-				};
-				timer.schedule(task2, 15000);
-
-				TimerTask task3 = new TimerTask() {
-					public void run() {
-						Cliente.getPedido().estado = Cliente.getPedido().estado.EN_RUTA;
-					}
-				};
-				timer.schedule(task3, 24000);
 
 				continue;
 			case "D":
 				System.out.println("Salir");
-				c.agregarRecibo(Cliente.getPedido().mostrarFactura2());
-				//System.out.println(c.historicoRecibos.get(0));
+				if (Cliente.getPedido().carrito.size() != 0) {
+					c.agregarRecibo(Cliente.getPedido().mostrarFactura2());
+				}
+				c.setApellidos("Martinez");
+				c.serializarCliente();
 				break;
-
+				
+			default:
+				System.out.println("Por favor seleccione una de las opciones para continuar");
+				continue;
 			}
 			break;
 		}
+		input.close();
 		System.exit(0);
 	}
 

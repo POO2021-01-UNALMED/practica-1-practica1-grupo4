@@ -2,6 +2,9 @@ package almacen;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import almacen.Pedido.estadoPedido;
+
 import java.time.*;
 
 
@@ -125,7 +128,7 @@ public class Almacen {
 	//El siguiente método asigna el pedido al cliente
 	public static void asignarPedido() {
 		Cliente.setPedido(pedido);
-		Cliente.getPedido().estado= Cliente.getPedido().estado.INICIADO;
+		Cliente.getPedido().estado= estadoPedido.INICIADO;
 	}
 	
 	//El siguiente método verifica si la dirección del cliente se encuentra en el rango de entrega del Almacen
