@@ -219,10 +219,97 @@ public class Main {
 							break;
 						}
 						continue;
+					case "LIMPIEZA":
+						System.out.println("seleccione productos y escriba la cantidad");
+						for (Producto li : Almacen.limpieza) {
+							System.out.println("Presione " + (Almacen.limpieza.indexOf(li) + 1) + "  para seleccionar: "
+									+ li.nombre + " $" + li.precio);
+
+						}
+						System.out.println("Presione 0 para continuar");
+						while (true) {
+
+							int seleccion = input.nextInt();
+							switch (seleccion) {
+							case 1:
+							case 2:
+							case 3:
+							case 4:
+							case 5:
+							System.out.println("escriba la cantidad de " + Almacen.limpieza.get(seleccion - 1).nombre);
+								int cantidad = input.nextInt();
+								Pedido.agregarProducto(Almacen.limpieza.get(seleccion - 1), cantidad);
+								System.out.println("Por favor continue con la seleccion");
+								continue;
+							default:
+								break;
+							}
+							break;
+						}
+						continue;
+					case "BEBIDAS":
+						System.out.println("seleccione productos y escriba la cantidad");
+						for (Producto b : Almacen.bebidas) {
+							System.out.println("Presione " + (Almacen.bebidas.indexOf(b) + 1) + "  para seleccionar: "
+									+ b.nombre + " $" + b.precio);
+
+						}
+						System.out.println("Presione 0 para continuar");
+						while (true) {
+
+							int seleccion = input.nextInt();
+							switch (seleccion) {
+							case 1:
+							case 2:
+							case 3:
+							case 4:
+							System.out.println("escriba la cantidad de " + Almacen.bebidas.get(seleccion - 1).nombre);
+								int cantidad = input.nextInt();
+								Pedido.agregarProducto(Almacen.bebidas.get(seleccion - 1), cantidad);
+								System.out.println("Por favor continue con la seleccion");
+								continue;
+							default:
+								break;
+							}
+							break;
+						}
+						continue;
+					case "TODOMIL":
+						System.out.println("seleccione productos y escriba la cantidad");
+						for (Producto t : Almacen.todoMil) {
+							System.out.println("Presione " + (Almacen.todoMil.indexOf(t) + 1) + "  para seleccionar: "
+									+ t.nombre + " $" + t.precio);
+
+						}
+						System.out.println("Presione 0 para continuar");
+						while (true) {
+
+							int seleccion = input.nextInt();
+							switch (seleccion) {
+							case 1:
+							case 2:
+							case 3:
+							case 4:
+							case 5:
+							System.out.println("escriba la cantidad de " + Almacen.todoMil.get(seleccion - 1).nombre);
+								int cantidad = input.nextInt();
+								Pedido.agregarProducto(Almacen.todoMil.get(seleccion - 1), cantidad);
+								System.out.println("Por favor continue con la seleccion");
+								continue;
+							default:
+								break;
+							}
+							break;
+						}
+						continue;
+					default:
+						System.out.println("No he entendido eso, por favor escribir de manera correcta el nombre de la categoría\n");
+						continue;
 					case "V":
 						break;
 					}
 					break;
+					
 				}
 
 				continue;
@@ -298,7 +385,6 @@ public class Main {
 				if (Cliente.getPedido().carrito.size() != 0) {
 					c.agregarRecibo(Cliente.getPedido().mostrarFactura2());
 				}
-				c.setApellidos("Martinez");
 				c.serializarCliente();
 				break;
 				

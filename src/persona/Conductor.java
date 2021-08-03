@@ -35,4 +35,8 @@ public class Conductor extends Empleados implements Serializable {
 		}
 		return false;
 	}
+	@Override
+	public String getRol() {
+		return "Conductor";
+	}
 }

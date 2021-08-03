@@ -150,12 +150,12 @@ public class Cliente implements Serializable{
 		switch (opcion) {
 		case 1:
 			empleado = this.picker;
-			h =  "Nombre del picker : " + empleado.getNombre() + " "+ empleado.getApellidos()+"\nIdentificacion picker :"+ empleado.getID();
+			h =  empleado.getRol().toUpperCase() + "\n\nNombre del picker : " + empleado.getNombre() + " "+ empleado.getApellidos()+"\nIdentificacion picker :"+ empleado.getID();
 			break;
 			
 		case 2:
 			empleado = conductor;
-			h= "Nombre del conductor : " + empleado.getNombre() + " "+ empleado.getApellidos()+"\nIdentificacion conductor :"+ empleado.getID();
+			h = empleado.getRol().toUpperCase() + "\n\nNombre del conductor : " + empleado.getNombre() + " "+ empleado.getApellidos()+"\nIdentificacion conductor :"+ empleado.getID();
 			break;
 		}
 		return h;

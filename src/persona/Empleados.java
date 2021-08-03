@@ -5,6 +5,7 @@ import java.time.LocalTime;
 
 public abstract class Empleados implements Serializable{
 	protected String nombre;
+	protected String rol;
 	protected String apellidos;
 	protected int ID;
 	protected int artefacto;
@@ -23,9 +24,11 @@ public abstract class Empleados implements Serializable{
 		this.comienzoTurno= comienzoTurno;
 		this.finTurno=finTurno;
 	}
+	public abstract String getRol();
 	public abstract void setStatus();
 	public abstract boolean withinRange();
 	public abstract boolean disponibleParaAtender();
+
 	
 	public String getNombre() {
 		return this.nombre;
@@ -38,6 +41,5 @@ public abstract class Empleados implements Serializable{
 	public String getApellidos() {
 		return this.apellidos;
 	}
-	
 	
 }

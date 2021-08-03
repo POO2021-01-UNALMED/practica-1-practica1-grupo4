@@ -1,5 +1,6 @@
 package persona;
 import java.io.Serializable;
+import almacen.Almacen;
 import java.time.*;
 import java.util.ArrayList;
 
@@ -36,7 +37,10 @@ public class Picker extends Empleados implements Serializable {
 		}
 		return false;
 	}
-	
+	@Override
+	public String getRol() {
+		return "Picker";
+	}
 	
 	
 }
