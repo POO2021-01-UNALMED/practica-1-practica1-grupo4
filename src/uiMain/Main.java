@@ -2,6 +2,8 @@ package uiMain;
 
 import gestorAplicación.*;
 import gestorAplicación.Almacen.Productos;
+import gestorAplicación.Pedido.estadoPedido;
+
 import java.util.*;
 
 
@@ -59,6 +61,7 @@ public class Main {
 
 		String opcion;
 
+		
 		while (true) {
 			System.out.println("Escoja una opcion: \n\n" + "A. Hacer domicilio\n"
 					+ "B. Consultas\n" + "C. finalizar compra\n" + "D. salir ");
@@ -116,8 +119,8 @@ public class Main {
 							case 2:
 							case 3:
 							case 4:
-								System.out
-										.println("escriba la cantidad de " + Almacen.carnes.get(seleccion - 1).nombre);
+							case 5:
+								System.out.println("escriba la cantidad de " + Almacen.carnes.get(seleccion - 1).nombre);
 								int cantidad = input.nextInt();
 								Pedido.agregarProducto(Almacen.carnes.get(seleccion - 1), cantidad);
 								System.out.println("Por favor continue con la seleccion");
@@ -147,8 +150,7 @@ public class Main {
 							case 5:
 							case 6:
 							case 7:
-								System.out.println(
-										"escriba la cantidad de " + Almacen.vegetales.get(seleccion - 1).nombre);
+								System.out.println("escriba la cantidad de " + Almacen.vegetales.get(seleccion - 1).nombre);
 								int cantidad = input.nextInt();
 								Pedido.agregarProducto(Almacen.vegetales.get(seleccion - 1), cantidad);
 								System.out.println("Por favor continue con la seleccion");
@@ -178,8 +180,7 @@ public class Main {
 							case 5:
 							case 6:
 							case 7:
-								System.out
-										.println("escriba la cantidad de " + Almacen.frutas.get(seleccion - 1).nombre);
+								System.out.println("escriba la cantidad de " + Almacen.frutas.get(seleccion - 1).nombre);
 								int cantidad = input.nextInt();
 								Pedido.agregarProducto(Almacen.frutas.get(seleccion - 1), cantidad);
 								System.out.println("Por favor continue con la seleccion");
@@ -207,6 +208,7 @@ public class Main {
 							case 3:
 							case 4:
 							case 5:
+							case 6:
 								System.out
 										.println("escriba la cantidad de " + Almacen.granos.get(seleccion - 1).nombre);
 								int cantidad = input.nextInt();
@@ -347,13 +349,13 @@ public class Main {
 				if (Cliente.getPedido().carrito.size() != 0) {
 					System.out.println(Cliente.getPedido().mostrarFactura2());
 					c.finalizarCompra();
-					Cliente.getPedido().estado = Cliente.getPedido().estado.EN_PROCESO;
+					Cliente.getPedido().estado = estadoPedido.EN_PROCESO;
 					
 					Timer timer = new Timer();
 
 					TimerTask task = new TimerTask() {
 						public void run() {
-							Cliente.getPedido().estado = Cliente.getPedido().estado.ENTREGADO;
+							Cliente.getPedido().estado = estadoPedido.ENTREGADO;
 
 						}
 					};
@@ -361,7 +363,7 @@ public class Main {
 
 					TimerTask task2 = new TimerTask() {
 						public void run() {
-							Cliente.getPedido().estado = Cliente.getPedido().estado.FINALIZADO;
+							Cliente.getPedido().estado = estadoPedido.FINALIZADO;
 							Cliente.setConductor(Almacen.randomConductor());
 						}
 					};
@@ -369,7 +371,7 @@ public class Main {
 
 					TimerTask task3 = new TimerTask() {
 						public void run() {
-							Cliente.getPedido().estado = Cliente.getPedido().estado.EN_RUTA;
+							Cliente.getPedido().estado = estadoPedido.EN_RUTA;
 						}
 					};
 					timer.schedule(task3, 24000);

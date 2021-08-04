@@ -44,7 +44,7 @@ ENTREGADO: El pedido entra en este estado cuando finalmente llega a la casa del 
 			System.out.println("Su pedido se encuentra iniciado");
 			break;
 		case EN_PROCESO:
-			System.out.println("El Picker se encuentra pidiendo sus productos");
+			System.out.println("El Picker se encuentra escogiendo sus productos");
 			break;
 		case FINALIZADO:
 			System.out.println("Su pedido se le fue entregado al conductor");
