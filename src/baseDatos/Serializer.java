@@ -14,12 +14,13 @@ import persona.Cliente;
 public class Serializer {
 
 	public static void serializar(Cliente cliente) throws IOException{
-		String ruta = "src\\baseDatos\\temp\\clienteInfo.ser";
+		String ruta = System.getProperty("user.dir") + "\\src\\baseDatos\\temp\\clienteInfo.ser";
+		//String ruta = "src\\baseDatos\\temp\\clienteInfo.ser";
 		File file = new File(ruta);
 		if (file.exists()) {
 			file.delete();
 		}
-		FileOutputStream fileOut = new FileOutputStream("src\\baseDatos\\temp\\clienteInfo.ser");
+		FileOutputStream fileOut = new FileOutputStream(ruta);
 		ObjectOutputStream out = new ObjectOutputStream(fileOut);
 		out.writeObject(cliente);
 		out.close();
@@ -27,8 +28,8 @@ public class Serializer {
 	}
 
 	public static boolean archivoEsVacio() throws IOException {
-		//String ruta = System.getProperty("user.dir") + "/baseDatos/temp/clienteInfo.ser";
-		String ruta = "src\\baseDatos\\temp\\clienteInfo.ser";
+		String ruta = System.getProperty("user.dir") + "\\src\\baseDatos\\temp\\clienteInfo.ser";
+		//String ruta = "src\\baseDatos\\temp\\clienteInfo.ser";
 		File file = new File(ruta);
 		if (file.exists()) {
 			BufferedReader br = new BufferedReader(new FileReader(ruta));

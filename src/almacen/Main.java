@@ -53,20 +53,20 @@ public class Main {
 			Pedido p1 = new Pedido();
 			Almacen.pedido = p1;
 			c.llamar();
-			System.out.println(c.getNombre());
-			System.out.println(c.getApellidos());
+			System.out.println("\n\nBIENVENIDO " + c.getNombreCompleto() + "\n");
+
 		}
 
 		String opcion;
 
 		while (true) {
-			System.out.println("Escoja una opcion: \n" + "A. Hacer domicilio\n"
+			System.out.println("Escoja una opcion: \n\n" + "A. Hacer domicilio\n"
 					+ "B. Consultas\n" + "C. finalizar compra\n" + "D. salir ");
 			opcion = input.next().toUpperCase();
 			switch (opcion) {
 			case "A":
 				while (true) {
-					System.out.println("Seleccionar Categoría");
+					System.out.println("Seleccionar Categoría\n");
 					for (Productos pro : Almacen.productosl) {
 						System.out.println(pro);
 					}
@@ -315,7 +315,7 @@ public class Main {
 				continue;
 			case "B":
 				while (true) {
-					System.out.println("¿qué tipo de consulta desea realizar?\n\nA. Consultar estado de mi domicilio\nB. Consultar informacion de mis aistentes"
+					System.out.println("¿qué tipo de consulta desea realizar?\n\nA. Consultar estado de mi domicilio\nB. Consultar informacion de mis asistentes"
 							+ "\nC. Consultar mis recibos\nD. volver");
 					String seleccion = input.next().toLowerCase();
 					switch (seleccion) {
@@ -381,7 +381,7 @@ public class Main {
 
 				continue;
 			case "D":
-				System.out.println("Salir");
+				System.out.println("Gracias por su compra!");
 				if (Cliente.getPedido().carrito.size() != 0) {
 					c.agregarRecibo(Cliente.getPedido().mostrarFactura2());
 				}
