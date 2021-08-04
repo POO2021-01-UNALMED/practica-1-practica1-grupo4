@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-import persona.Cliente;
+import gestorAplicación.Cliente;
 
 public class Serializer {
 

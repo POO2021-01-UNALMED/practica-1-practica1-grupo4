@@ -1,16 +1,13 @@
-package almacen;
+package gestorAplicación;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import almacen.Pedido.estadoPedido;
+import gestorAplicación.Pedido.estadoPedido;
 
 import java.time.*;
 
 
-import persona.Picker;
-import persona.Conductor;
-import persona.Cliente;
 
 ///ALMACEN\\\ establecimiento comercial en cuestión.
 

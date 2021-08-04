@@ -1,4 +1,4 @@
-package almacen;
+package gestorAplicación;
 
 public class Producto {
 

@@ -1,6 +1,5 @@
-package persona;
+package gestorAplicación;
 import java.io.Serializable;
-import almacen.Almacen;
 import java.time.*;
 import java.util.ArrayList;
 

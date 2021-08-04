@@ -1,4 +1,4 @@
-package persona;
+package gestorAplicación;
 import java.io.Serializable;
 import java.time.LocalTime;
 public class Conductor extends Empleados implements Serializable {

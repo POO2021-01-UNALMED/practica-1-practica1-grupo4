@@ -1,5 +1,5 @@
-package persona;
-import almacen.*;
+package gestorAplicación;
+
 import baseDatos.*;
 
 import java.io.IOException;

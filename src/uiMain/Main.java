@@ -1,9 +1,9 @@
-package almacen;
+package uiMain;
 
-import persona.*;
+import gestorAplicación.*;
+import gestorAplicación.Almacen.Productos;
 import java.util.*;
 
-import almacen.Almacen.Productos;
 
 import java.io.File;
 import java.io.IOException;

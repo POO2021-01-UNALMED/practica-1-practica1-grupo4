@@ -1,12 +1,13 @@
 package baseDatos;
 
 import java.io.FileInputStream;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
 
-import persona.Cliente;
+import gestorAplicación.Cliente;
 
 public class Deserializer{
 	
