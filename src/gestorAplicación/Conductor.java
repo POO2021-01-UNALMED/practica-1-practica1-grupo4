@@ -3,6 +3,9 @@ import java.io.Serializable;
 import java.time.LocalTime;
 public class Conductor extends Empleados implements Serializable {
 	
+	// El conductor es el que se encarga de llevar el domicilio al cliente siempre y cuando este en horario laboral y no esté en otro servicio
+	
+	
 	public Picker picker;
 	
 	// CONSTRUCTOR para la clase "Conductor"
@@ -12,6 +15,8 @@ public class Conductor extends Empleados implements Serializable {
 		this.setStatus();
 		
 	}
+	
+	// retorna true si el conductor esta dentro de su horario laboral
 	public boolean withinRange() {
 		return (LocalTime.now().isBefore(finTurno) && LocalTime.now().isAfter(comienzoTurno));
 		
@@ -28,7 +33,7 @@ public class Conductor extends Empleados implements Serializable {
 			this.estado = "ACTIVO";
 		}
 	}
-	
+	// retorna true si el conductor edta disponible para atender
 	public boolean disponibleParaAtender() {
 		if (!this.accion && this.estado.equals("ACTIVO")) {
 			return true;

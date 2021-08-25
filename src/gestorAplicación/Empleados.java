@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalTime;
 
 public abstract class Empleados implements Serializable{
+	// Es la plantilla para Picker y Conductor
 	protected String nombre;
 	protected String rol;
 	protected String apellidos;

@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 public class Picker extends Empleados implements Serializable {
 
+	//El picker es el que se encarga de escoger los productos para el cliente siempre y cuando no este en otro servicio y siga en horario laboral
+	
 	 public Cliente cliente;
 	
 	// CONSTRUCTOR para la clase "Picker"

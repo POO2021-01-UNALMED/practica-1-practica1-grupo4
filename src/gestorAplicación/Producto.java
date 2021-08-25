@@ -1,7 +1,7 @@
 package gestorAplicación;
 
 public class Producto {
-
+	// Son los elementos que están en el supermercado
 	public String nombre;
 	public int precio;
 	public int cantidad;

@@ -28,6 +28,8 @@ ENTREGADO: El pedido entra en este estado cuando finalmente llega a la casa del 
 		total+= producto.precio*numeroVeces;
 	}
 	
+	
+	// retorna las facturas del cliente ya en formato para mostrar
 	public String mostrarFactura2() {
 		DateTimeFormatter f = DateTimeFormatter.ofPattern("h:mm:ss");
 		String lista = "";
@@ -37,6 +39,8 @@ ENTREGADO: El pedido entra en este estado cuando finalmente llega a la casa del 
 		return "-----------------------------\n\n"+LocalDate.now()+"\n"+LocalTime.now().format(f)+
 				"\n\n"+lista+"\n"+"total: $"+total+"\n"+"-----------------------------";
 	}
+	
+	//muestra el estado actual del pedido del cliente
 	
 	public void consultaPedido() {
 		switch(estado) {

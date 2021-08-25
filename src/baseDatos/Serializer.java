@@ -27,6 +27,7 @@ public class Serializer {
 		fileOut.close();
 	}
 
+	// el metodo verifica si no existe algun objeto serializado
 	public static boolean archivoEsVacio() throws IOException {
 		String ruta = System.getProperty("user.dir") + "\\src\\baseDatos\\temp\\clienteInfo.ser";
 		//String ruta = "src\\baseDatos\\temp\\clienteInfo.ser";

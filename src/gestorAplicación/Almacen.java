@@ -134,7 +134,7 @@ public class Almacen {
 		
 		return pickers.get(index);
 	}
-	
+	//El siguiente método asigna un conductor disponible al cliente
 	public static Conductor randomConductor() {
 		
 		int index = (int)(Math.random()*conductores.size());

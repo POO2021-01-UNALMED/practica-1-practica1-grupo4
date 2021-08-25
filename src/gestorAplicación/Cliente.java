@@ -140,10 +140,13 @@ public class Cliente implements Serializable{
 	public String toString() {
 		return "Cliente [nombre=" + nombre + ", apellidos=" + apellidos + "]";
 	}
+	
+	//este metodo agrega un recibo a una lista. Se entra como parametro el recibo.
 	public void agregarRecibo(String recibo) {
 		this.historicoRecibos.add(recibo);
 	}
 
+	// este metodo retorna la informacion de un empleado. Si se ingresa 1 como parametro se retorna la informacion del picker y si se ingresa 2 se retorna la informacion del conductor
 	public String infoEmpleado(int opcion) {
 		String h= "";
 		Empleados empleado;
@@ -160,6 +163,7 @@ public class Cliente implements Serializable{
 		}
 		return h;
 	}
+	// este metodo retorna los recibos del cliente
 	public String consultarMisReciblos() {
 		String r = "";
 		for(String recibo : historicoRecibos) {
