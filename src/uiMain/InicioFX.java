@@ -1,6 +1,6 @@
 package uiMain;
 
-import com.sun.jdi.event.Event;
+
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -8,6 +8,8 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
@@ -42,6 +44,7 @@ public class InicioFX extends Application {
 	Button btnIniciar;
 	Menu menuInicio;
 	int contp3 = 0;
+	int contador=0;
 
 	private static Label createLabel(String text, String Style) {
 		Label label = new Label(text);
@@ -59,6 +62,7 @@ public class InicioFX extends Application {
 		l1.setTextFill(Color.WHITE);
 
 		LabelHandler manejador = new LabelHandler();
+		menuHandler manejador2= new menuHandler();
 		l3 = createLabel("wow", "GREEN");
 		l3.setPrefSize(200, 100);
 		l3.setTextFill(Color.WHITE);
@@ -101,6 +105,7 @@ public class InicioFX extends Application {
 		imvSuper1 = new ImageView(imgSuper1);
 		imvSuper1.setFitHeight(250);
 		imvSuper1.setFitWidth(200);
+		imvSuper1.setOnMouseEntered(manejador);
 		p4.setSpacing(5);
 		btnIniciar.setPrefSize(200, 50);
 		p4.getChildren().addAll(imvSuper1, btnIniciar);
@@ -115,7 +120,9 @@ public class InicioFX extends Application {
 
 		menuInicio = new Menu("Inicio");
 		menuSalir = new MenuItem("Salir");
+		menuSalir.setOnAction(manejador2);
 		menuDes = new MenuItem("Descripción");
+		menuDes.setOnAction(manejador2);
 		menuInicio.getItems().addAll(menuSalir, menuDes);
 		MenuBar menubar = new MenuBar();
 		menubar.getMenus().add(menuInicio);
@@ -132,30 +139,80 @@ public class InicioFX extends Application {
 		@Override
 		public void handle(MouseEvent e) {
 			Object control = e.getSource();
-			if (control.equals(l3)) {
-				if (contp3 == 0) {
-					l3.setText("usuario 1");
-					imv1.setImage(new Image("im1.jpeg"));
-					imv2.setImage(new Image("im2.jpeg"));
-					imv3.setImage(new Image("im3.jpeg"));
-					imv4.setImage(new Image("im4.jpeg"));
-					contp3++;
-				} else if (contp3 == 1) {
-					l3.setText("usuario 2");
-					imv1.setImage(img1);
-					imv2.setImage(img2);
-					imv3.setImage(img3);
-					imv4.setImage(img4);
-					contp3++;
-				} else if (contp3 == 2) {
-					l3.setText("usuario 3");
-					contp3 = 0;
+			if (control instanceof Label) {
+				if (control.equals(l3)) {
+					if (contp3 == 0) {
+						l3.setText("usuario 1");
+						imv1.setImage(new Image("im1.jpeg"));
+						imv2.setImage(new Image("im2.jpeg"));
+						imv3.setImage(new Image("im3.jpeg"));
+						imv4.setImage(new Image("im4.jpeg"));
+						contp3++;
+					} else if (contp3 == 1) {
+						l3.setText("usuario 2");
+						imv1.setImage(img1);
+						imv2.setImage(img2);
+						imv3.setImage(img3);
+						imv4.setImage(img4);
+						contp3++;
+					} else if (contp3 == 2) {
+						l3.setText("usuario 3");
+						contp3 = 0;
+					}
+	
 				}
-
 			}
+			if(control instanceof ImageView) {
+				if(contador==0) {
+					imvSuper1.setImage(new Image("mercado1.jpg"));
+					contador ++;
+				}
+				else if(contador==1) {
+					imvSuper1.setImage(new Image("mercado2.jpg"));
+					contador ++;
+				}
+				else if(contador==2) {
+					imvSuper1.setImage(new Image("mercado3.jpg"));
+					contador ++;
+				}
+				else if(contador==3) {
+					imvSuper1.setImage(new Image("mercado4.jpg"));
+					contador ++;
+				}
+				else if(contador==4) {
+					imvSuper1.setImage(new Image("super.jpg"));
+					contador=0;
+				}
+			}
+			
 
 		}
 
+	}
+	class menuHandler implements EventHandler<ActionEvent> {
+
+		@Override
+		public void handle(ActionEvent e) {
+			Object control=e.getSource();
+			if (control instanceof MenuItem) {
+				if(control.equals(menuSalir)) {
+					System.exit(0);
+				
+				}
+				else if(control.equals(menuDes)){
+					Alert alert = new Alert(AlertType.INFORMATION);
+					alert.setTitle("Information Dialog");
+					alert.setHeaderText("Look, an Information Dialog");
+					alert.setContentText("I have a great message for you!");
+
+					alert.showAndWait();
+				}
+				
+			}
+					
+			
+		}
+		
 	}
 
 	public static void main(String[] args) {
