@@ -100,7 +100,7 @@ public class Inicio {
 
 			@Override
 			public void handle(ActionEvent arg0) {
-				InicioFX.stage.setScene(scene2);
+				PrimaryStage.stage.setScene(scene2);
 				
 			}
 			

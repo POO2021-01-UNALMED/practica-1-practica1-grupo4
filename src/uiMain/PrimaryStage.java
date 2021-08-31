@@ -24,14 +24,14 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
-public class InicioFX extends Application {
+public class PrimaryStage extends Application {
 
 	Scene scene2 = new User().getScene();
 	static Scene scene = new Inicio().getScene();
 	static Stage stage = new Stage();
 	
 	public void start(Stage stage) {
-		InicioFX.stage = stage;
+		PrimaryStage.stage = stage;
 		stage.setScene(scene);
 		stage.show();
 	}

@@ -14,7 +14,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.VBox;
-import uiMain.InicioFX;
+import uiMain.PrimaryStage;
 
 
 public class User{
@@ -69,7 +69,7 @@ public class User{
 			if (control instanceof MenuItem) {
 				if(control.equals(salir)) {
 					//InicioFX.stage.setScene(InicioFX.scene);
-					InicioFX.stage.setScene(InicioFX.scene);;
+					PrimaryStage.stage.setScene(PrimaryStage.scene);;
 				}
 				else if(control.equals(aplicacion)){
 					Alert alert = new Alert(AlertType.INFORMATION);
