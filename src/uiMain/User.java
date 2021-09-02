@@ -1,5 +1,6 @@
 package uiMain;
 
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -38,7 +39,7 @@ public class User {
 	MenuItem consultaEmpleados;
 	MenuItem consultaRecibos;
 	VBox root;
-	ComboBox cbxTiposProducto;
+	ComboBox<String> cbxTiposProducto;
 	TextField txtProducto1;
 	TextField txtProducto2;
 	TextField txtProducto3;
@@ -50,6 +51,9 @@ public class User {
 	Button btnHacerDomicilio;
 
 	public User() {
+		String[] criteria = {"Nombre","Apellido","Número de Identificación", "Dirección residencial"};
+		String[] valores = {"nombre","apellido",null, null};
+		FieldPanel root4 = new FieldPanel("CRITERIO", criteria, "Valor", valores, null);
 		root = new VBox();
 		VBox root2 = new VBox();
 		VBox root3 = new VBox();
@@ -64,7 +68,7 @@ public class User {
 		label2.setPrefHeight(77);
 		label2.setPrefWidth(Double.MAX_VALUE);
 		label2.setAlignment(Pos.CENTER);
-		root3.getChildren().addAll(label1, label2);
+		root3.getChildren().addAll(label1, label2,root4);
 
 		handlerU = new menuHandler();
 		menuBar = new MenuBar();
