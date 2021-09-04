@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import gestorAplicación.Pedido.estadoPedido;
+import javafx.scene.image.Image;
 
 import java.time.*;
 
@@ -23,7 +24,7 @@ public class Almacen {
 	public enum Productos{lACTEOS, CARNES, VEGETALES, FRUTAS, GRANOS, LIMPIEZA, BEBIDAS, TODOMIL} // Tipos de productos ofrecidos por el almacén
 	public static Pedido pedido; //Pedido perteneciente al cliente en cuestión.
 	public static ArrayList<Producto> lacteos = new ArrayList<>();// lista de lacteos
-	public static ArrayList<Producto> carnes = new ArrayList<>();// lista de carnes
+	public ArrayList<Producto> carnes = new ArrayList<>();// lista de carnes
 	public static ArrayList<Producto> vegetales = new ArrayList<>();// lista de vegetales
 	public static ArrayList<Producto> frutas = new ArrayList<>();// lista de frutas
 	public static ArrayList<Producto> granos = new ArrayList<>();// lista de granos
@@ -34,6 +35,7 @@ public class Almacen {
 	public static ArrayList<Conductor>conductores = new ArrayList<>();// lista de los conductores del almacén 
 	public Productos productos;
 	public static List<Productos> productosl = Arrays.asList(Productos.values()); // lista de los tipos de productos
+	
 
 	//el siguiente método genera un número de identificación aleatorio para el empleado
 	public static int randomID() {
@@ -68,18 +70,17 @@ public class Almacen {
 		conductores.add(c3);
 		conductores.add(c4);
 		
-		
 		lacteos.add( new Producto("leche", 1700, 51) );
 		lacteos.add(new Producto("Queso", 1500, 34));
 		lacteos.add(new Producto("Mantequilla", 2200, 22));
 		lacteos.add(new Producto("Yogurt", 1850, 46));
 		lacteos.add(new Producto("Helado", 2000, 38));
 		
-		carnes.add(new Producto("Res", 4500, 40));
-		carnes.add(new Producto("Pescado", 3750, 67));
-		carnes.add(new Producto("Pollo", 4100, 55));
-		carnes.add(new Producto("Cerdo", 3950, 49));
-		carnes.add(new Producto("Huevos", 3700, 60));
+		carnes.add(new Producto("Res", 4500, 40, "./imagenes/iconCheese.png"));
+		carnes.add(new Producto("Pescado", 3750, 67,"./imagenes/iconCheese.png"));
+		carnes.add(new Producto("Pollo", 4100, 55,"./imagenes/iconCheese.png"));
+		carnes.add(new Producto("Cerdo", 3950, 49,"./imagenes/iconCheese.png"));
+		//carnes.add(new Producto("Huevos", 3700, 60,"./imagenes/iconCheese.png"));
 		
 		vegetales.add(new Producto("Zanahorias", 2000, 51));
 		vegetales.add(new Producto("Repollo", 1500, 39));

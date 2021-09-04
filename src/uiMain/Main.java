@@ -20,7 +20,7 @@ public class Main {
 		
 		Scanner input = new Scanner(System.in);
 		
-		Almacen a1 = new Almacen();
+	    Almacen a1 = new Almacen();
 		Cliente c = new Cliente();
 
 		if (Serializer.archivoEsVacio()) {
@@ -105,11 +105,16 @@ public class Main {
 						continue;
 					case "CARNES":
 						System.out.println("seleccione productos y escriba la cantidad");
-						for (Producto ca : Almacen.carnes) {
-							System.out.println("Presione " + (Almacen.carnes.indexOf(ca) + 1) + "   para seleccionar: "
+						for (Producto ca : a1.carnes) {
+							System.out.println("Presione " + (a1.carnes.indexOf(ca) + 1) + "   para seleccionar: "
 									+ ca.nombre + " $" + ca.precio);
 
 						}
+						ArrayList<String>lista = new ArrayList<>();
+						for (Producto p : a1.carnes) {
+							lista.add(p.image);
+						}
+						System.out.println(lista);
 						System.out.println("Presione 0 para continuar");
 						while (true) {
 
@@ -120,9 +125,9 @@ public class Main {
 							case 3:
 							case 4:
 							case 5:
-								System.out.println("escriba la cantidad de " + Almacen.carnes.get(seleccion - 1).nombre);
+								System.out.println("escriba la cantidad de " + a1.carnes.get(seleccion - 1).nombre);
 								int cantidad = input.nextInt();
-								Pedido.agregarProducto(Almacen.carnes.get(seleccion - 1), cantidad);
+								Pedido.agregarProducto(a1.carnes.get(seleccion - 1), cantidad);
 								System.out.println("Por favor continue con la seleccion");
 								continue;
 							default:
