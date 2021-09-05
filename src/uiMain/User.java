@@ -193,14 +193,13 @@ public class User{
 					
 					btnHacerDomicilio = new Button("Hacer Domicilio");
 					GridPane.setConstraints(btnHacerDomicilio, 1, 6,1,3);
-	
+					Label relleno = new Label("relleno");
 					
 					hacerDomicilio.getChildren().addAll(tipoProducto, cbxTiposProducto);
-					intento.getChildren().addAll(hacerDomicilio);
+					intento.getChildren().addAll(hacerDomicilio, relleno);
 			
 					cbxTiposProducto.valueProperty().addListener(new ChangeListener<String>() {
 		
-
 						
 						@Override
 						public void changed(ObservableValue arg0, String arg1, String arg2) {
@@ -240,6 +239,7 @@ public class User{
 								
 								String[] valores = {"1","2",null,null};
 								FieldPanel rootI = new FieldPanel("Producto",lista,precios, "cantidad", valores, "precio");
+								intento.getChildren().remove(1);
 								intento.getChildren().add(rootI);
 							
 							}
