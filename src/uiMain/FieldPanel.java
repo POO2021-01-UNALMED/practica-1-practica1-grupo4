@@ -8,6 +8,7 @@ import gestorAplicación.Cliente;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -35,17 +36,28 @@ public class FieldPanel extends Pane{
 		gridPane.setVgap(10);
 		gridPane.setHgap(8);
 		Button boton = new Button("Registrar");
+		boton.setAlignment(Pos.CENTER);
+		
 		boton.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
 			public void handle(ActionEvent arg0) {
 				Cliente c = new Cliente(values.get(0).getText(), values.get(1).getText(),Integer.valueOf(values.get(2).getText()),values.get(3).getText());
-				/*try {
+				try {
 					c.serializarCliente();
+					Label label = new Label("Tu información ha sido guardada de forma exitosa");
+					
+					border.setBottom(null);
+					border.setCenter(label);
+					label.setAlignment(Pos.CENTER);
+					ImageView bienvenidaImagen = new ImageView(new Image("./imagenes/cart.png"));
+					bienvenidaImagen.setFitHeight(200);
+					bienvenidaImagen.setFitWidth(200);
+					border.setBottom(bienvenidaImagen);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}*/
+				}
 			}
 			
 		});
@@ -83,6 +95,7 @@ public class FieldPanel extends Pane{
 		gridPane.getChildren().addAll(labelTitle, labelValue);
 		border.setCenter(gridPane);
 		border.setBottom(boton);
+		
 		
 		this.getChildren().add(border);
 	}

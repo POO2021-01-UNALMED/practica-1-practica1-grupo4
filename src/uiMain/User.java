@@ -60,7 +60,9 @@ public class User{
 	ImageView imvProducto4;
 	Button btnHacerDomicilio;
 	Almacen almacen ;
-		
+	 VBox root3;
+	 Label label1;
+	 Label label2;
 
 	public User() {
 		
@@ -73,32 +75,47 @@ public class User{
 		Cliente c = new Cliente();
 		root = new VBox();
 		VBox root2 = new VBox();
-		VBox root3 = new VBox();
+		root3 = new VBox();
 		root3.setPadding(new Insets(5));
-		Label label1 = new Label("Nombre del proceso o consulta");
-		label1.setPrefHeight(25);
-		label1.setPrefWidth(Double.MAX_VALUE);
-		label1.setAlignment(Pos.CENTER);
+		
 
-		Label label2 = new Label("Descripcion");
-		label2.setPrefHeight(77);
-		label2.setPrefWidth(Double.MAX_VALUE);
-		label2.setAlignment(Pos.CENTER);
+		
 		FieldPanel root4;
 		
 		
 		try {
 			if (Serializer.archivoEsVacio()) {
+				label1 = new Label("REGISTRO");
+				label1.setPrefHeight(25);
+				label1.setPrefWidth(Double.MAX_VALUE);
+				label1.setAlignment(Pos.CENTER);
+				
+				label2 = new Label("Porfavor ingresar los siguientes datos:");
+				label2.setPrefHeight(77);
+				label2.setPrefWidth(Double.MAX_VALUE);
+				label2.setAlignment(Pos.CENTER);
 				
 				root4 = new FieldPanel("CRITERIO", criteria, "Valor", valores, null);
 				root3.getChildren().addAll(label1, label2,root4);
+			}
+			else {
+				label1 = new Label("Nombre de la funcionalidad");
+				label1.setPrefHeight(25);
+				label1.setPrefWidth(Double.MAX_VALUE);
+				label1.setAlignment(Pos.CENTER);
+				
+				label2 = new Label("Descripcion");
+				label2.setPrefHeight(77);
+				label2.setPrefWidth(Double.MAX_VALUE);
+				label2.setAlignment(Pos.CENTER);
+				root3.getChildren().addAll(label1,label2);
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		//root3.getChildren().addAll(label1,label2);
+	
 		
 		
 
@@ -180,15 +197,14 @@ public class User{
 					
 					hacerDomicilio.getChildren().addAll(tipoProducto, cbxTiposProducto);
 					intento.getChildren().addAll(hacerDomicilio);
+			
 					cbxTiposProducto.valueProperty().addListener(new ChangeListener<String>() {
-					
-					
-					
+		
 
-						
 						
 						@Override
 						public void changed(ObservableValue arg0, String arg1, String arg2) {
+			
 							if (arg2.equals("LACTEOS")) {
 								/*imvProducto1 = new ImageView("./imagenes/iconMilk.png");
 								txtProducto1 = new TextField();
@@ -225,6 +241,7 @@ public class User{
 								String[] valores = {"1","2",null,null};
 								FieldPanel rootI = new FieldPanel("Producto",lista,precios, "cantidad", valores, "precio");
 								intento.getChildren().add(rootI);
+							
 							}
 							else if (arg2.equals("VEGETALES")) {
 								
