@@ -32,7 +32,7 @@ public class FieldPanel extends Pane {
 	String[] valores;
 	boolean[] habilitado;
 	public static ArrayList<TextField> values = new ArrayList<>();
-	Cliente c;
+	static Cliente c;
 	
 	static void checking() throws ErrorTexto{
 		if (values.get(0).getText() == "" || values.get(1).getText() == "" || values.get(2).getText() == "" || values.get(3).getText() == "") {

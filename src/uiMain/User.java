@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import baseDatos.Serializer;
+import errors.CarritoVacio;
 import gestorAplicación.*;
 //import gestorAplicación.Almacen;
 
@@ -184,12 +185,38 @@ public class User {
 					Label relleno = new Label("relleno");
 
 					hacerDomicilio.getChildren().addAll(tipoProducto, cbxTiposProducto);
-					intento.getChildren().addAll(hacerDomicilio, relleno);
+					VBox realizandoPedido = new VBox();
+					Button finalizar = new Button("Finalizar Domicilio");
+					finalizar.setOnAction(new EventHandler<ActionEvent>() {
+
+						@Override
+						public void handle(ActionEvent arg0) {
+							try {
+								if (Cliente.getPedido().carrito.size() == 0) {
+									throw new CarritoVacio();
+								}
+							}catch(CarritoVacio cart) {
+								Alert alert = new Alert(AlertType.WARNING);
+								alert.setTitle("Carrito Vacío");
+								alert.setContentText(cart.getMessage());
+								alert.showAndWait();
+								return;
+							}
+							System.out.println("está bien");
+						}
+						
+					});
+					realizandoPedido.getChildren().addAll(relleno, finalizar);
+					realizandoPedido.setAlignment(Pos.CENTER);
+					intento.getChildren().addAll(hacerDomicilio, realizandoPedido);
+				
 
 					cbxTiposProducto.valueProperty().addListener(new ChangeListener<String>() {
 
 						@Override
 						public void changed(ObservableValue arg0, String arg1, String arg2) {
+							
+							
 
 							if (arg2.equals("LACTEOS")) {
 								cadenaCategoria = "LACTEOS";
@@ -256,18 +283,33 @@ public class User {
 								
 
 							}
+							Button volver = new Button("Volver");
+							volver.setOnAction(new EventHandler<ActionEvent>() {
+
+								@Override
+								public void handle(ActionEvent arg0) {
+									intento.getChildren().clear();
+									intento.getChildren().addAll(hacerDomicilio, realizandoPedido);
+									
+								}
+								
+							});
 							
+							intento.getChildren().add(volver);
 						}
+						
 
 					});
 
 					
-
+					
+	
 					root.getChildren().addAll(menuBar, intento);
 
 				} else if (control.equals(estadoDomi)) {
 					root.getChildren().clear();
 					root.getChildren().add(menuBar);
+					
 				} else if (control.equals(consultaEmpleados)) {
 					root.getChildren().clear();
 					root.getChildren().add(menuBar);
