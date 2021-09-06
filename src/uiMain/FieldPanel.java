@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import errors.ErrorTexto;
 import gestorAplicación.Almacen;
 import gestorAplicación.Cliente;
 import gestorAplicación.Pedido;
@@ -11,9 +12,11 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -28,9 +31,14 @@ public class FieldPanel extends Pane {
 	String tituloValores;
 	String[] valores;
 	boolean[] habilitado;
-	public ArrayList<TextField> values = new ArrayList<>();
+	public static ArrayList<TextField> values = new ArrayList<>();
 	Cliente c;
-
+	
+	static void checking() throws ErrorTexto{
+		if (values.get(0).getText() == "" || values.get(1).getText() == "" || values.get(2).getText() == "" || values.get(3).getText() == "") {
+			throw new ErrorTexto();
+		}
+	}
 	public FieldPanel(String tituloCriterios, String[] criterios, String tituloValores, String[] valores,
 			boolean[] habilitado) {
 
@@ -45,6 +53,22 @@ public class FieldPanel extends Pane {
 
 			@Override
 			public void handle(ActionEvent arg0) {
+				try {
+					checking();
+				}
+				catch(ErrorTexto e) {
+					String toAlert = "";
+					for (int i = 0;i < criterios.length; i++) {
+						if (values.get(i).getText() == "") {
+							toAlert += criterios[i] + "\n";
+						}
+					}
+					Alert alert = new Alert(AlertType.WARNING);
+					alert.setTitle("Error Texto");
+					alert.setContentText(e.getMessage() + "\n\n" + toAlert);
+					alert.showAndWait();
+					return;
+				}
 				c = new Cliente(values.get(0).getText(), values.get(1).getText(),
 						Integer.valueOf(values.get(2).getText()), values.get(3).getText());
 				try {
