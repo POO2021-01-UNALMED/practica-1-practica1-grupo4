@@ -1,6 +1,5 @@
 package uiMain;
 
-
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -34,7 +33,7 @@ import gestorAplicación.*;
 
 //import gestorAplicación.Producto;
 
-public class User{
+public class User {
 	private Scene sceneU;
 	GridPane hacerDomicilio;
 	Menu archivo;
@@ -50,76 +49,66 @@ public class User{
 	MenuItem consultaRecibos;
 	VBox root;
 	ComboBox<String> cbxTiposProducto;
-	TextField txtProducto1;
-	TextField txtProducto2;
-	TextField txtProducto3;
-	TextField txtProducto4;
+	static TextField txtProducto1;
+	static TextField txtProducto2;
+	static TextField txtProducto3;
+	static TextField txtProducto4;
 	ImageView imvProducto1;
 	ImageView imvProducto2;
 	ImageView imvProducto3;
 	ImageView imvProducto4;
 	Button btnHacerDomicilio;
-	Almacen almacen ;
-	 VBox root3;
-	 Label label1;
-	 Label label2;
+	static Almacen almacen = new Almacen();
+	VBox root3;
+	Label label1;
+	Label label2;
+	static String cadenaCategoria = ""; 
 
 	public User() {
+
 		
-		
-		almacen = new Almacen();
-		
-		String[] criteria = {"Nombre","Apellido","Número de Identificación", "Dirección residencial"};
-		String[] valores = {"nombre","apellido",null, null};
-		
+
+		String[] criteria = { "Nombre", "Apellido", "Número de Identificación", "Dirección residencial" };
+		String[] valores = { "nombre", "apellido", null, null };
+
 		Cliente c = new Cliente();
 		root = new VBox();
 		VBox root2 = new VBox();
 		root3 = new VBox();
 		root3.setPadding(new Insets(5));
-		
 
-		
 		FieldPanel root4;
-		
-		
+
 		try {
 			if (Serializer.archivoEsVacio()) {
 				label1 = new Label("REGISTRO");
 				label1.setPrefHeight(25);
 				label1.setPrefWidth(Double.MAX_VALUE);
 				label1.setAlignment(Pos.CENTER);
-				
+
 				label2 = new Label("Porfavor ingresar los siguientes datos:");
 				label2.setPrefHeight(77);
 				label2.setPrefWidth(Double.MAX_VALUE);
 				label2.setAlignment(Pos.CENTER);
-				
+
 				root4 = new FieldPanel("CRITERIO", criteria, "Valor", valores, null);
-				root3.getChildren().addAll(label1, label2,root4);
-			}
-			else {
+				root3.getChildren().addAll(label1, label2, root4);
+			} else {
 				label1 = new Label("Nombre de la funcionalidad");
 				label1.setPrefHeight(25);
 				label1.setPrefWidth(Double.MAX_VALUE);
 				label1.setAlignment(Pos.CENTER);
-				
+
 				label2 = new Label("Descripcion");
 				label2.setPrefHeight(77);
 				label2.setPrefWidth(Double.MAX_VALUE);
 				label2.setAlignment(Pos.CENTER);
-				root3.getChildren().addAll(label1,label2);
+				root3.getChildren().addAll(label1, label2);
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-	
-		
-		
-
-		
 
 		handlerU = new menuHandler();
 		menuBar = new MenuBar();
@@ -148,7 +137,7 @@ public class User{
 		root2.setPadding(new Insets(10));
 		root.getChildren().addAll(new Label("Nombre de la Aplicación"), root2);
 		sceneU = new Scene(root, 500, 500);
-		
+
 	}
 
 	public Scene getScene() {
@@ -171,15 +160,14 @@ public class User{
 					alert.setContentText("El programa permite hacer difrentes consultas en un supermercado");
 					alert.showAndWait();
 				} else if (control.equals(hacerDomi)) {
-					
+
 					root.getChildren().clear();
 					VBox intento = new VBox();
 					hacerDomicilio = new GridPane();
 					hacerDomicilio.setVgap(5);
 					hacerDomicilio.setHgap(5);
 					Label tipoProducto = new Label("Escoja el tipo de producto");
-					String[] tiposProducto = { "LACTEOS", "CARNES", "VEGETALES", "FRUTAS", "GRANOS", "LIMPIEZA",
-							"BEBIDAS", "TODOMIL" };
+					String[] tiposProducto = { "LACTEOS", "CARNES", "VEGETALES", "FRUTAS"};
 					cbxTiposProducto = new ComboBox<>(FXCollections.observableArrayList(tiposProducto));
 					Label txtProducto = new Label("Producto");
 					Label txtCantidad = new Label("Cantidad");
@@ -189,76 +177,92 @@ public class User{
 					GridPane.setConstraints(cbxTiposProducto, 1, 0);
 					GridPane.setConstraints(txtProducto, 0, 1);
 					GridPane.setConstraints(txtCantidad, 1, 1);
-					GridPane.setConstraints(precio, 2,1);
-					
-					btnHacerDomicilio = new Button("Hacer Domicilio");
-					GridPane.setConstraints(btnHacerDomicilio, 1, 6,1,3);
+					GridPane.setConstraints(precio, 2, 1);
+
+					//btnHacerDomicilio = new Button("Hacer Domicilio");
+					//GridPane.setConstraints(btnHacerDomicilio, 1, 6, 1, 3);
 					Label relleno = new Label("relleno");
-					
+
 					hacerDomicilio.getChildren().addAll(tipoProducto, cbxTiposProducto);
 					intento.getChildren().addAll(hacerDomicilio, relleno);
-			
+
 					cbxTiposProducto.valueProperty().addListener(new ChangeListener<String>() {
-		
-						
+
 						@Override
 						public void changed(ObservableValue arg0, String arg1, String arg2) {
-			
-							if (arg2.equals("LACTEOS")) {
-								/*imvProducto1 = new ImageView("./imagenes/iconMilk.png");
-								txtProducto1 = new TextField();
-								imvProducto2 = new ImageView("./imagenes/iconCheese.png");
-								txtProducto2 = new TextField();
-								imvProducto3 = new ImageView("./imagenes/iconYogurt.png");
-								txtProducto3 = new TextField();
-								imvProducto4 = new ImageView("./imagenes/iconButter.png");
-								txtProducto4 = new TextField();
 
-								GridPane.setConstraints(imvProducto1, 0, 2);
-								GridPane.setConstraints(txtProducto1, 1, 2);
-								GridPane.setConstraints(imvProducto2, 0, 3);
-								GridPane.setConstraints(txtProducto2, 1, 3);
-								GridPane.setConstraints(imvProducto3, 0, 4);
-								GridPane.setConstraints(txtProducto3, 1, 4);
-								GridPane.setConstraints(imvProducto4, 0, 5);
-								GridPane.setConstraints(txtProducto4, 1, 5);
-								hacerDomicilio.getChildren().addAll(imvProducto1, txtProducto1, imvProducto2,
-										txtProducto2, imvProducto3, txtProducto3, imvProducto4, txtProducto4,
-										txtProducto, txtCantidad,btnHacerDomicilio);*/
-							}
-							else if (arg2.equals("CARNES")) {
-								
-								ArrayList<Image>lista = new ArrayList<>();
-								ArrayList<Integer>precios = new ArrayList<>();
-								for(Producto pi: almacen.carnes) {
+							if (arg2.equals("LACTEOS")) {
+								cadenaCategoria = "LACTEOS";
+								intento.getChildren().remove(1);
+								ArrayList<Image> lista = new ArrayList<>();
+								ArrayList<Integer> precios = new ArrayList<>();
+								for (Producto pi : almacen.lacteos) {
 									lista.add(new Image(pi.image));
 									precios.add(pi.precio);
 								}
+								String[] valores = { "1", "2", null, null };
+								FieldPanel rootLacteos = new FieldPanel("Producto", lista, precios, "cantidad", valores,
+										"precio");
 								
-			
+								intento.getChildren().add(rootLacteos);
 								
-								String[] valores = {"1","2",null,null};
-								FieldPanel rootI = new FieldPanel("Producto",lista,precios, "cantidad", valores, "precio");
+							} else if (arg2.equals("CARNES")) {
+								cadenaCategoria = "CARNES";
 								intento.getChildren().remove(1);
-								intento.getChildren().add(rootI);
-							
-							}
-							else if (arg2.equals("VEGETALES")) {
+								ArrayList<Image> lista = new ArrayList<>();
+								ArrayList<Integer> precios = new ArrayList<>();
+								for (Producto pi : almacen.carnes) {
+									lista.add(new Image(pi.image));
+									precios.add(pi.precio);
+								}
+								String[] valores = { "1", "2", null, null };
+								FieldPanel rootCarnes = new FieldPanel("Producto", lista, precios, "cantidad", valores,
+										"precio");
 								
-							}
+								intento.getChildren().add(rootCarnes);
+								
+								
+							} else if (arg2.equals("VEGETALES")) {
+								cadenaCategoria = "VEGETALES";
+								intento.getChildren().remove(1);
+								ArrayList<Image> lista = new ArrayList<>();
+								ArrayList<Integer> precios = new ArrayList<>();
+								for (Producto pi : almacen.vegetales) {
+									lista.add(new Image(pi.image));
+									precios.add(pi.precio);
+								}
+								String[] valores = { "1", "2", null, null };
+								FieldPanel rootVegetales = new FieldPanel("Producto", lista, precios, "cantidad", valores,
+										"precio");
+								
+								
+								intento.getChildren().add(rootVegetales);
+								
+								
+							} else if (arg2.equals("FRUTAS")) {
+								cadenaCategoria = "FRUTAS";
+								intento.getChildren().remove(1);
+								ArrayList<Image> lista = new ArrayList<>();
+								ArrayList<Integer> precios = new ArrayList<>();
+								for (Producto pi : almacen.frutas) {
+									lista.add(new Image(pi.image));
+									precios.add(pi.precio);
+								}
+								String[] valores = { "1", "2", null, null };
+								FieldPanel rootFrutas = new FieldPanel("Producto", lista, precios, "cantidad", valores,
+										"precio");
+								
+								intento.getChildren().add(rootFrutas);
+								
 
+							}
+							
 						}
 
 					});
-					
-					btnHacerDomicilio.setOnAction( new EventHandler<ActionEvent>() {
 
-						@Override
-						public void handle(ActionEvent arg0) {
-							System.out.println(txtProducto1.getText());
-							
-						}});
 					
+
 					root.getChildren().addAll(menuBar, intento);
 
 				} else if (control.equals(estadoDomi)) {

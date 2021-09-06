@@ -32,10 +32,14 @@ public class PrimaryStage extends Application  {
 	static Scene scene = new Inicio().getScene();
 	static Stage stage = new Stage();
 	
+	
+	
 	public void start(Stage stage) {
 		PrimaryStage.stage = stage;
 		stage.setScene(scene);
+		//stage.setResizable(false);
 		stage.show();
+		
 	}
 	public static void main(String[] args) {
 		launch(args);

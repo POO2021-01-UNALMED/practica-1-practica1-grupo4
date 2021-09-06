@@ -23,14 +23,10 @@ public class Almacen {
 	
 	public enum Productos{lACTEOS, CARNES, VEGETALES, FRUTAS, GRANOS, LIMPIEZA, BEBIDAS, TODOMIL} // Tipos de productos ofrecidos por el almacén
 	public static Pedido pedido; //Pedido perteneciente al cliente en cuestión.
-	public static ArrayList<Producto> lacteos = new ArrayList<>();// lista de lacteos
+	public ArrayList<Producto> lacteos = new ArrayList<>();// lista de lacteos
 	public ArrayList<Producto> carnes = new ArrayList<>();// lista de carnes
-	public static ArrayList<Producto> vegetales = new ArrayList<>();// lista de vegetales
-	public static ArrayList<Producto> frutas = new ArrayList<>();// lista de frutas
-	public static ArrayList<Producto> granos = new ArrayList<>();// lista de granos
-	public static ArrayList<Producto> limpieza = new ArrayList<>(); // lista de productos de limpieza
-	public static ArrayList<Producto> bebidas = new ArrayList<>();//lista de bebidas
-	public static ArrayList<Producto> todoMil = new ArrayList<>(); //lista de productos con un precio de $1000
+	public ArrayList<Producto> vegetales = new ArrayList<>();// lista de vegetales
+	public ArrayList<Producto> frutas = new ArrayList<>();// lista de frutas
 	public static ArrayList<Picker>pickers = new ArrayList<>();// lista de los Pickers del almacén
 	public static ArrayList<Conductor>conductores = new ArrayList<>();// lista de los conductores del almacén 
 	public Productos productos;
@@ -70,57 +66,30 @@ public class Almacen {
 		conductores.add(c3);
 		conductores.add(c4);
 		
-		lacteos.add( new Producto("leche", 1700, 51) );
-		lacteos.add(new Producto("Queso", 1500, 34));
-		lacteos.add(new Producto("Mantequilla", 2200, 22));
-		lacteos.add(new Producto("Yogurt", 1850, 46));
-		lacteos.add(new Producto("Helado", 2000, 38));
+		lacteos.add( new Producto("leche", 1700, 51,"./imagenes/iconMilk.png") );
+		lacteos.add(new Producto("Queso", 1500, 34,"./imagenes/iconCheese.png"));
+		lacteos.add(new Producto("Mantequilla", 2200, 22,"./imagenes/iconButter.png"));
+		lacteos.add(new Producto("Yogurt", 1850, 46,"./imagenes/iconYogurt.png"));
 		
-		carnes.add(new Producto("Res", 4500, 40, "./imagenes/iconCheese.png"));
-		carnes.add(new Producto("Pescado", 3750, 67,"./imagenes/iconCheese.png"));
-		carnes.add(new Producto("Pollo", 4100, 55,"./imagenes/iconCheese.png"));
-		carnes.add(new Producto("Cerdo", 3950, 49,"./imagenes/iconCheese.png"));
+		
+		carnes.add(new Producto("Res", 4500, 40, "./imagenes/iconRes.png"));
+		carnes.add(new Producto("Pescado", 3750, 67,"./imagenes/iconPescado.png"));
+		carnes.add(new Producto("Pollo", 4100, 55,"./imagenes/iconPollo.png"));
+		carnes.add(new Producto("Cerdo", 3950, 49,"./imagenes/iconCerdo.png"));
 		//carnes.add(new Producto("Huevos", 3700, 60,"./imagenes/iconCheese.png"));
 		
-		vegetales.add(new Producto("Zanahorias", 2000, 51));
-		vegetales.add(new Producto("Repollo", 1500, 39));
-		vegetales.add(new Producto("Cebolla", 2000, 42));
-		vegetales.add(new Producto("Tomate", 1500, 41));
-		vegetales.add(new Producto("Papa", 2300, 80));
-		vegetales.add(new Producto("Brocoli", 1700, 33));
-		vegetales.add(new Producto("Cilantro", 1050, 38));
-		frutas.add(new Producto("Manzana", 1400, 62));
+		vegetales.add(new Producto("Zanahorias", 2000, 51,"./imagenes/iconZanahoria.png"));
+		vegetales.add(new Producto("Cebolla", 2000, 42,"./imagenes/iconCebolla.png"));
+		vegetales.add(new Producto("Tomate", 1500, 41,"./imagenes/icontTomate.png"));
+		vegetales.add(new Producto("Papa", 2300, 80,"./imagenes/iconPapa.png"));
+
 		
-		frutas.add(new Producto("Uvas", 1800, 54));
-		frutas.add(new Producto("Piña", 2400, 49));
-		frutas.add(new Producto("Naranja", 1600, 67));
-		frutas.add(new Producto("Pera", 1200, 51));
-		frutas.add(new Producto("Coco", 2100, 40));
-		frutas.add(new Producto("Banana", 1300, 79));
+		frutas.add(new Producto("Manzana", 1400, 62,"./imagenes/iconManzana.png"));
+		frutas.add(new Producto("Uvas", 1800, 54,"./imagenes/iconUva.png"));
+		frutas.add(new Producto("Piña", 2400, 49,"./imagenes/iconPina.png"));
+		frutas.add(new Producto("Banana", 1300, 79,"./imagenes/iconBanano.png"));
 		
-		granos.add(new Producto("Arroz", 1850, 81));
-		granos.add(new Producto("Arveja", 1700, 50));
-		granos.add(new Producto("Lentejas", 1250, 56));
-		granos.add(new Producto("Garbanzos", 1700, 47));
-		granos.add(new Producto("Maiz", 2300, 56));
-		granos.add(new Producto("Café", 2700, 60));
 		
-		limpieza.add(new Producto("Detergente", 3000, 31));
-		limpieza.add(new Producto("Jabón", 1500, 47));
-		limpieza.add(new Producto("Shampoo", 1400, 50));
-		limpieza.add(new Producto("Alcohol", 2500, 63));
-		limpieza.add(new Producto("Crema dental", 2000, 39));
-		
-		bebidas.add(new Producto("Soda", 2200, 46));
-		bebidas.add(new Producto("Cerveza",7000, 40));
-		bebidas.add(new Producto("Té", 2100, 66));
-		bebidas.add(new Producto("Jugo", 1600, 49));
-		
-		todoMil.add(new Producto("Goma de mascar", 168));
-		todoMil.add(new Producto("Mentas", 124));
-		todoMil.add(new Producto("Tapabocas", 87));
-		todoMil.add(new Producto("Papitas", 90));
-		todoMil.add(new Producto("Gomitas", 113));
 	}
 	
 	//El siguiente método asigna un Picker disponible al cliente
