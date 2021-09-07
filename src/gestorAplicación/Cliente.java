@@ -80,8 +80,8 @@ public class Cliente implements Serializable{
 	}
 	
 	// el siguiente método retornará a través de un getter el Conductor asosciado al cliente
-	public static Conductor getConductor() {
-		return conductor;
+	public  Conductor getConductor() {
+		return this.conductor;
 	}
 	
 	// Los siguientes métodos son un setter y getter respectivamente para el atributo de Pedido
@@ -127,7 +127,7 @@ public class Cliente implements Serializable{
 		ID = iD;
 	}
 
-	public static void setConductor(Conductor c) {
+	public static  void setConductor(Conductor c) {
 		conductor = c;
 	}
 	
@@ -157,7 +157,7 @@ public class Cliente implements Serializable{
 			break;
 			
 		case 2:
-			empleado = conductor;
+			empleado = this.conductor;
 			h = empleado.getRol().toUpperCase() + "\n\nNombre del conductor : " + empleado.getNombre() + " "+ empleado.getApellidos()+"\nIdentificacion conductor :"+ empleado.getID();
 			break;
 		}

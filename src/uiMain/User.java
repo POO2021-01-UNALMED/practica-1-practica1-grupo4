@@ -21,6 +21,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import uiMain.PrimaryStage;
 
@@ -31,6 +32,7 @@ import java.util.TimerTask;
 
 import baseDatos.Serializer;
 import errors.CarritoVacio;
+import errors.ErrorConductor;
 import gestorAplicación.*;
 //import gestorAplicación.Almacen;
 import gestorAplicación.Pedido.estadoPedido;
@@ -68,6 +70,12 @@ public class User {
 	Label label2;
 	static String cadenaCategoria = "";
 	static Cliente c;
+	
+	void CheckConductor() throws ErrorConductor {
+		if (c.getConductor() == null) {
+			throw new ErrorConductor();
+		}
+	}
 
 	public User() {
 
@@ -408,6 +416,61 @@ public class User {
 				} else if (control.equals(consultaEmpleados)) {
 					root.getChildren().clear();
 					root.getChildren().add(menuBar);
+					
+					HBox Empleados = new HBox();
+					Empleados.setAlignment(Pos.CENTER);
+					
+					VBox PickerI = new VBox();
+					PickerI.setAlignment(Pos.CENTER);
+					PickerI.setSpacing(20);
+					Button PickerB = new Button("CONSULTAR");
+					PickerB.setAlignment(Pos.CENTER);
+					PickerB.setOnAction(new EventHandler<ActionEvent>() {
+
+						@Override
+						public void handle(ActionEvent arg0) {
+							PickerI.getChildren().remove(2);
+							PickerI.getChildren().add(new Label(c.infoEmpleado(1)));
+							
+						}
+						
+					});
+					PickerI.getChildren().addAll(new Label("Consultar información \n del Picker"), PickerB, new Label("Relleno"));
+					PickerI.setPadding(new Insets(20));
+					
+					VBox ConductorI = new VBox();
+					ConductorI.setSpacing(20);
+					ConductorI.setAlignment(Pos.CENTER);
+					Button ConductorB = new Button("CONSULTAR");
+					ConductorB.setAlignment(Pos.CENTER);
+					ConductorB.setOnAction(new EventHandler<ActionEvent>() {
+
+						@Override
+						public void handle(ActionEvent arg0) {
+							
+							try {
+								CheckConductor();
+							}
+							catch(ErrorConductor driver) {
+								Alert alert = new Alert(AlertType.WARNING);
+								alert.setTitle("Error Conductor");
+								alert.setContentText(driver.getMessage());
+								alert.showAndWait();
+								return;
+							}
+							ConductorI.getChildren().remove(2);
+							ConductorI.getChildren().add(new Label(c.infoEmpleado(2)));
+							
+						}
+						
+					});
+					ConductorI.getChildren().addAll(new Label("Consultar información \n del Conductor"), ConductorB, new Label("relleno"));
+					ConductorI.setPadding(new Insets(20));
+					
+					Empleados.getChildren().addAll(PickerI, ConductorI);
+					Empleados.setPadding(new Insets(35));
+					root.getChildren().add(Empleados);
+					
 				} else if (control.equals(consultaRecibos)) {
 					root.getChildren().clear();
 					PanelFactura p1 = new PanelFactura(c);
