@@ -66,17 +66,15 @@ public class User {
 	VBox root3;
 	Label label1;
 	Label label2;
-	static String cadenaCategoria = ""; 
+	static String cadenaCategoria = "";
 	static Cliente c;
 
 	public User() {
 
-		
-
 		String[] criteria = { "Nombre", "Apellido", "Número de Identificación", "Dirección residencial" };
 		String[] valores = { "nombre", "apellido", null, null };
 
-		//Cliente c = new Cliente();
+		// Cliente c = new Cliente();
 		root = new VBox();
 		VBox root2 = new VBox();
 		root3 = new VBox();
@@ -109,17 +107,16 @@ public class User {
 				label2.setPrefWidth(Double.MAX_VALUE);
 				label2.setAlignment(Pos.CENTER);
 				root3.getChildren().addAll(label1, label2);
-				
+
 				try {
-				c = new Cliente();
-				c = c.deserializarCliente();
-				Pedido p1 = new Pedido();
-				Almacen.pedido = p1;
-				c.llamar();
-				
-				}
-				catch(Exception e) {
-					
+					c = new Cliente();
+					c = c.deserializarCliente();
+					Pedido p1 = new Pedido();
+					Almacen.pedido = p1;
+					c.llamar();
+
+				} catch (Exception e) {
+
 				}
 			}
 		} catch (IOException e) {
@@ -184,7 +181,7 @@ public class User {
 					hacerDomicilio.setVgap(5);
 					hacerDomicilio.setHgap(5);
 					Label tipoProducto = new Label("Escoja el tipo de producto");
-					String[] tiposProducto = { "LACTEOS", "CARNES", "VEGETALES", "FRUTAS"};
+					String[] tiposProducto = { "LACTEOS", "CARNES", "VEGETALES", "FRUTAS" };
 					cbxTiposProducto = new ComboBox<>(FXCollections.observableArrayList(tiposProducto));
 					Label txtProducto = new Label("Producto");
 					Label txtCantidad = new Label("Cantidad");
@@ -196,8 +193,7 @@ public class User {
 					GridPane.setConstraints(txtCantidad, 1, 1);
 					GridPane.setConstraints(precio, 2, 1);
 
-					//btnHacerDomicilio = new Button("Hacer Domicilio");
-					//GridPane.setConstraints(btnHacerDomicilio, 1, 6, 1, 3);
+					
 					Label relleno = new Label("relleno");
 					Button finalizar = new Button("Finalizar Domicilio");
 					finalizar.setOnAction(new EventHandler<ActionEvent>() {
@@ -208,62 +204,65 @@ public class User {
 								if (Cliente.getPedido().carrito.size() == 0) {
 									throw new CarritoVacio();
 								}
-							}catch(CarritoVacio cart) {
+							} catch (CarritoVacio cart) {
 								Alert alert = new Alert(AlertType.WARNING);
 								alert.setTitle("Carrito Vacío");
 								alert.setContentText(cart.getMessage());
 								alert.showAndWait();
 								return;
 							}
-							
-								
-								System.out.println(Pedido.mostrarFactura2());
-								c.finalizarCompra();
-								Cliente.getPedido().estado = estadoPedido.EN_PROCESO;
-								
-								Timer timer = new Timer();
 
-								TimerTask task = new TimerTask() {
-									public void run() {
-										Cliente.getPedido().estado = estadoPedido.ENTREGADO;
+							System.out.println(Pedido.mostrarFactura2());
+							c.finalizarCompra();
+							Cliente.getPedido().estado = estadoPedido.EN_PROCESO;
 
-									}
-								};
-								timer.schedule(task, 60000);
+							Timer timer = new Timer();
 
-								TimerTask task2 = new TimerTask() {
-									public void run() {
-										Cliente.getPedido().estado = estadoPedido.FINALIZADO;
-										Cliente.setConductor(Almacen.randomConductor());
-									}
-								};
-								timer.schedule(task2, 15000);
+							TimerTask task = new TimerTask() {
+								public void run() {
+									Cliente.getPedido().estado = estadoPedido.ENTREGADO;
+								}
+							};
+							timer.schedule(task, 60000);
 
-								TimerTask task3 = new TimerTask() {
-									public void run() {
-										Cliente.getPedido().estado = estadoPedido.EN_RUTA;
-									}
-								};
-								timer.schedule(task3, 24000);
-							
+							TimerTask task2 = new TimerTask() {
+								public void run() {
+									Cliente.getPedido().estado = estadoPedido.FINALIZADO;
+									Cliente.setConductor(Almacen.randomConductor());
+								}
+							};
+							timer.schedule(task2, 15000);
+
+							TimerTask task3 = new TimerTask() {
+								public void run() {
+									Cliente.getPedido().estado = estadoPedido.EN_RUTA;
+								}
+							};
+							timer.schedule(task3, 24000);
+
 						}
-						
+
 					});
 
-					hacerDomicilio.getChildren().addAll(tipoProducto, cbxTiposProducto,finalizar);
 					VBox realizandoPedido = new VBox();
 					
-					realizandoPedido.getChildren().addAll(relleno, finalizar);
+					GridPane.setConstraints(tipoProducto, 0, 0);
+					GridPane.setConstraints(cbxTiposProducto, 1, 0);
+					GridPane.setConstraints(finalizar, 0, 1);
+					GridPane.setConstraints(txtProducto, 0, 2);
+					GridPane.setConstraints(txtCantidad, 1, 2);
+					GridPane.setConstraints(precio, 2, 2);
+					hacerDomicilio.getChildren().addAll(tipoProducto, cbxTiposProducto, finalizar);
+					
+
+					realizandoPedido.getChildren().addAll(relleno);
 					realizandoPedido.setAlignment(Pos.CENTER);
 					intento.getChildren().addAll(hacerDomicilio, realizandoPedido);
-				
 
 					cbxTiposProducto.valueProperty().addListener(new ChangeListener<String>() {
 
 						@Override
 						public void changed(ObservableValue arg0, String arg1, String arg2) {
-							
-							
 
 							if (arg2.equals("LACTEOS")) {
 								cadenaCategoria = "LACTEOS";
@@ -277,9 +276,9 @@ public class User {
 								String[] valores = { "1", "2", null, null };
 								FieldPanel rootLacteos = new FieldPanel("Producto", lista, precios, "cantidad", valores,
 										"precio");
-								
+
 								intento.getChildren().add(rootLacteos);
-								
+
 							} else if (arg2.equals("CARNES")) {
 								cadenaCategoria = "CARNES";
 								intento.getChildren().remove(1);
@@ -292,10 +291,9 @@ public class User {
 								String[] valores = { "1", "2", null, null };
 								FieldPanel rootCarnes = new FieldPanel("Producto", lista, precios, "cantidad", valores,
 										"precio");
-								
+
 								intento.getChildren().add(rootCarnes);
-								
-								
+
 							} else if (arg2.equals("VEGETALES")) {
 								cadenaCategoria = "VEGETALES";
 								intento.getChildren().remove(1);
@@ -306,13 +304,11 @@ public class User {
 									precios.add(pi.precio);
 								}
 								String[] valores = { "1", "2", null, null };
-								FieldPanel rootVegetales = new FieldPanel("Producto", lista, precios, "cantidad", valores,
-										"precio");
-								
-								
+								FieldPanel rootVegetales = new FieldPanel("Producto", lista, precios, "cantidad",
+										valores, "precio");
+
 								intento.getChildren().add(rootVegetales);
-								
-								
+
 							} else if (arg2.equals("FRUTAS")) {
 								cadenaCategoria = "FRUTAS";
 								intento.getChildren().remove(1);
@@ -325,39 +321,21 @@ public class User {
 								String[] valores = { "1", "2", null, null };
 								FieldPanel rootFrutas = new FieldPanel("Producto", lista, precios, "cantidad", valores,
 										"precio");
-								
+
 								intento.getChildren().add(rootFrutas);
-								
 
 							}
-							Button volver = new Button("Volver");
-							volver.setOnAction(new EventHandler<ActionEvent>() {
 
-								@Override
-								public void handle(ActionEvent arg0) {
-									intento.getChildren().clear();
-									intento.getChildren().addAll(hacerDomicilio, realizandoPedido);
-									
-								}
-								
-							});
-							
-							intento.getChildren().add(volver);
 						}
-						
 
 					});
 
-					
-					
-	
 					root.getChildren().addAll(menuBar, intento);
 
 				} else if (control.equals(estadoDomi)) {
 					root.getChildren().clear();
 					root.getChildren().add(menuBar);
-					
-					
+
 				} else if (control.equals(consultaEmpleados)) {
 					root.getChildren().clear();
 					root.getChildren().add(menuBar);

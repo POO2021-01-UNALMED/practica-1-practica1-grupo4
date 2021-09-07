@@ -40,6 +40,10 @@ public class FieldPanel extends Pane {
 		}
 	}
 	
+	public FieldPanel getPanel() {
+		return this;
+	}
+	
 	public FieldPanel(String tituloCriterios, String[] criterios, String tituloValores, String[] valores,
 			boolean[] habilitado) {
 
@@ -207,7 +211,9 @@ public class FieldPanel extends Pane {
 						
 					}
 				}
-				System.out.println(Pedido.carrito);			
+				
+				System.out.println(Pedido.carrito);	
+				getPanel().getChildren().clear();	
 			}});
 		
 		
