@@ -43,6 +43,7 @@ public class Inicio {
 	Scene scene2 = new User().getScene();
 	private Scene sceneI;
 
+
 	private static Label createLabel(String text, String Style) {
 		Label label = new Label(text);
 		label.setStyle("-fx-Background-color:" + Style + ";" + "\n-fx-font-style: italic;");

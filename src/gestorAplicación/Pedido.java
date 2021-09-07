@@ -36,9 +36,9 @@ ENTREGADO: El pedido entra en este estado cuando finalmente llega a la casa del 
 		for (String p : carrito) {
 			lista += p + "\n";
 		}
-		return "-----------------------------\n\n"+LocalDate.now()+"\n"+LocalTime.now().format(f)+
-				"\n\n"+lista+"\n"+"total: $"+total+"\n"+"-----------------------------";
+		return lista;
 	}
+	
 	
 	//muestra el estado actual del pedido del cliente
 	

@@ -34,6 +34,7 @@ public class FieldPanel extends Pane {
 	public static ArrayList<TextField> values = new ArrayList<>();
 	static Cliente c;
 	
+	
 	static void checking() throws ErrorTexto{
 		if (values.get(0).getText() == "" || values.get(1).getText() == "" || values.get(2).getText() == "" || values.get(3).getText() == "") {
 			throw new ErrorTexto();
@@ -180,7 +181,6 @@ public class FieldPanel extends Pane {
 		
 		Button boton = new Button("Añadir al carrito");
 		boton.setOnAction(new EventHandler<ActionEvent>() {
-
 			@Override
 			public void handle(ActionEvent arg0) {
 				if (User.cadenaCategoria.equals("LACTEOS")) {

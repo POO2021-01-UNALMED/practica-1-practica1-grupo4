@@ -167,7 +167,7 @@ public class User {
 				if (control.equals(salir)) {
 					// InicioFX.stage.setScene(InicioFX.scene);
 					PrimaryStage.stage.setScene(PrimaryStage.scene);
-					;
+					
 				} else if (control.equals(aplicacion)) {
 					Alert alert = new Alert(AlertType.INFORMATION);
 					alert.setTitle("Descripcion Aplicación");
@@ -193,7 +193,6 @@ public class User {
 					GridPane.setConstraints(txtCantidad, 1, 1);
 					GridPane.setConstraints(precio, 2, 1);
 
-					
 					Label relleno = new Label("relleno");
 					Button finalizar = new Button("Finalizar Domicilio");
 					finalizar.setOnAction(new EventHandler<ActionEvent>() {
@@ -212,8 +211,10 @@ public class User {
 								return;
 							}
 
-							System.out.println(Pedido.mostrarFactura2());
+							c.agregarRecibo(c.getPedido().mostrarFactura2());
 							c.finalizarCompra();
+							c.getPedido().carrito.clear();
+							
 							Cliente.getPedido().estado = estadoPedido.EN_PROCESO;
 
 							Timer timer = new Timer();
@@ -245,7 +246,7 @@ public class User {
 					});
 
 					VBox realizandoPedido = new VBox();
-					
+
 					GridPane.setConstraints(tipoProducto, 0, 0);
 					GridPane.setConstraints(cbxTiposProducto, 1, 0);
 					GridPane.setConstraints(finalizar, 0, 1);
@@ -253,7 +254,6 @@ public class User {
 					GridPane.setConstraints(txtCantidad, 1, 2);
 					GridPane.setConstraints(precio, 2, 2);
 					hacerDomicilio.getChildren().addAll(tipoProducto, cbxTiposProducto, finalizar);
-					
 
 					realizandoPedido.getChildren().addAll(relleno);
 					realizandoPedido.setAlignment(Pos.CENTER);
@@ -340,9 +340,9 @@ public class User {
 					consultaPedido.getChildren().addAll(new Label("Aquí hará su consulta"));
 					consultaPedido.setPadding(new Insets(20));
 					Label message;
-					
+
 					ImageView status;
-					switch(Cliente.getPedido().estado) {
+					switch (Cliente.getPedido().estado) {
 					case INICIADO:
 						message = new Label("Su pedido se encuentra iniciado");
 						message.setPadding(new Insets(10));
@@ -350,17 +350,17 @@ public class User {
 						status = new ImageView(new Image("./imagenes/Iniciado.jpg"));
 						status.setFitHeight(300);
 						status.setFitWidth(300);
-						consultaPedido.getChildren().addAll(message,status );
+						consultaPedido.getChildren().addAll(message, status);
 						break;
 					case EN_PROCESO:
-						
+
 						message = new Label("El Picker se encuentra escogiendo sus productos");
 						message.setPadding(new Insets(10));
 						consultaPedido.getChildren().clear();
 						status = new ImageView(new Image("./imagenes/EnProceso.jpg"));
 						status.setFitHeight(300);
 						status.setFitWidth(300);
-						consultaPedido.getChildren().addAll(message,status );
+						consultaPedido.getChildren().addAll(message, status);
 						break;
 					case FINALIZADO:
 						message = new Label("Su pedido se le fue entregado al conductor");
@@ -369,50 +369,49 @@ public class User {
 						status = new ImageView(new Image("./imagenes/Finalizado.jpg"));
 						status.setFitHeight(300);
 						status.setFitWidth(300);
-						consultaPedido.getChildren().addAll(message,status );
-						
+						consultaPedido.getChildren().addAll(message, status);
+
 						break;
 					case EN_RUTA:
-					
+
 						message = new Label("Su pedido se encuentra en ruta");
 						message.setPadding(new Insets(10));
 						consultaPedido.getChildren().clear();
-						status =  new ImageView(new Image("./imagenes/En_Ruta.jpg"));
+						status = new ImageView(new Image("./imagenes/En_Ruta.jpg"));
 						status.setFitHeight(300);
 						status.setFitWidth(300);
-						consultaPedido.getChildren().addAll(message,status );
-						
+						consultaPedido.getChildren().addAll(message, status);
+
 						break;
 					case ENTREGADO:
-						
+
 						message = new Label("Su pedido ya se le fue entregado");
 						message.setPadding(new Insets(10));
 						consultaPedido.getChildren().clear();
 						status = new ImageView(new Image("./imagenes/Entregado.jpg"));
 						status.setFitHeight(300);
 						status.setFitWidth(300);
-						consultaPedido.getChildren().addAll(message,status );
+						consultaPedido.getChildren().addAll(message, status);
 						break;
 					default:
-					
+
 						message = new Label("Su pedido no ha sido iniciado");
 						message.setPadding(new Insets(10));
 						consultaPedido.getChildren().clear();
 						status = new ImageView(new Image("./imagenes/Error.png"));
 						status.setFitHeight(300);
 						status.setFitWidth(300);
-						consultaPedido.getChildren().addAll(message,status );
+						consultaPedido.getChildren().addAll(message, status);
 						break;
 					}
 					root.getChildren().add(consultaPedido);
-				}
-
 				} else if (control.equals(consultaEmpleados)) {
 					root.getChildren().clear();
 					root.getChildren().add(menuBar);
 				} else if (control.equals(consultaRecibos)) {
 					root.getChildren().clear();
-					root.getChildren().add(menuBar);
+					PanelFactura p1 = new PanelFactura(c);
+					root.getChildren().addAll(menuBar, p1);
 				}
 
 			}
@@ -420,4 +419,4 @@ public class User {
 		}
 
 	}
-
+}
