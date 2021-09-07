@@ -26,11 +26,14 @@ import uiMain.PrimaryStage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import baseDatos.Serializer;
 import errors.CarritoVacio;
 import gestorAplicación.*;
 //import gestorAplicación.Almacen;
+import gestorAplicación.Pedido.estadoPedido;
 
 //import gestorAplicación.Producto;
 
@@ -64,6 +67,7 @@ public class User {
 	Label label1;
 	Label label2;
 	static String cadenaCategoria = ""; 
+	static Cliente c;
 
 	public User() {
 
@@ -72,7 +76,7 @@ public class User {
 		String[] criteria = { "Nombre", "Apellido", "Número de Identificación", "Dirección residencial" };
 		String[] valores = { "nombre", "apellido", null, null };
 
-		Cliente c = new Cliente();
+		//Cliente c = new Cliente();
 		root = new VBox();
 		VBox root2 = new VBox();
 		root3 = new VBox();
@@ -105,6 +109,18 @@ public class User {
 				label2.setPrefWidth(Double.MAX_VALUE);
 				label2.setAlignment(Pos.CENTER);
 				root3.getChildren().addAll(label1, label2);
+				
+				try {
+				c = new Cliente();
+				c = c.deserializarCliente();
+				Pedido p1 = new Pedido();
+				Almacen.pedido = p1;
+				c.llamar();
+				
+				}
+				catch(Exception e) {
+					
+				}
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -183,9 +199,6 @@ public class User {
 					//btnHacerDomicilio = new Button("Hacer Domicilio");
 					//GridPane.setConstraints(btnHacerDomicilio, 1, 6, 1, 3);
 					Label relleno = new Label("relleno");
-
-					hacerDomicilio.getChildren().addAll(tipoProducto, cbxTiposProducto);
-					VBox realizandoPedido = new VBox();
 					Button finalizar = new Button("Finalizar Domicilio");
 					finalizar.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -202,10 +215,44 @@ public class User {
 								alert.showAndWait();
 								return;
 							}
-							System.out.println("está bien");
+							
+								
+								System.out.println(Pedido.mostrarFactura2());
+								c.finalizarCompra();
+								Cliente.getPedido().estado = estadoPedido.EN_PROCESO;
+								
+								Timer timer = new Timer();
+
+								TimerTask task = new TimerTask() {
+									public void run() {
+										Cliente.getPedido().estado = estadoPedido.ENTREGADO;
+
+									}
+								};
+								timer.schedule(task, 60000);
+
+								TimerTask task2 = new TimerTask() {
+									public void run() {
+										Cliente.getPedido().estado = estadoPedido.FINALIZADO;
+										Cliente.setConductor(Almacen.randomConductor());
+									}
+								};
+								timer.schedule(task2, 15000);
+
+								TimerTask task3 = new TimerTask() {
+									public void run() {
+										Cliente.getPedido().estado = estadoPedido.EN_RUTA;
+									}
+								};
+								timer.schedule(task3, 24000);
+							
 						}
 						
 					});
+
+					hacerDomicilio.getChildren().addAll(tipoProducto, cbxTiposProducto,finalizar);
+					VBox realizandoPedido = new VBox();
+					
 					realizandoPedido.getChildren().addAll(relleno, finalizar);
 					realizandoPedido.setAlignment(Pos.CENTER);
 					intento.getChildren().addAll(hacerDomicilio, realizandoPedido);
@@ -309,6 +356,7 @@ public class User {
 				} else if (control.equals(estadoDomi)) {
 					root.getChildren().clear();
 					root.getChildren().add(menuBar);
+					
 					
 				} else if (control.equals(consultaEmpleados)) {
 					root.getChildren().clear();

@@ -30,7 +30,7 @@ ENTREGADO: El pedido entra en este estado cuando finalmente llega a la casa del 
 	
 	
 	// retorna las facturas del cliente ya en formato para mostrar
-	public String mostrarFactura2() {
+	public static String mostrarFactura2() {
 		DateTimeFormatter f = DateTimeFormatter.ofPattern("h:mm:ss");
 		String lista = "";
 		for (String p : carrito) {

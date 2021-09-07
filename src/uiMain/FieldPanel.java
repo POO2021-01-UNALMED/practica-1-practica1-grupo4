@@ -39,6 +39,7 @@ public class FieldPanel extends Pane {
 			throw new ErrorTexto();
 		}
 	}
+	
 	public FieldPanel(String tituloCriterios, String[] criterios, String tituloValores, String[] valores,
 			boolean[] habilitado) {
 
@@ -89,6 +90,7 @@ public class FieldPanel extends Pane {
 			}
 
 		});
+		
 		BorderPane.setMargin(gridPane, new Insets(70));
 
 		Label labelTitle = new Label(tituloCriterios);
@@ -130,7 +132,7 @@ public class FieldPanel extends Pane {
 
 	public FieldPanel(String tituloCriterios, ArrayList<Image> images, ArrayList<Integer> precios, String tituloValores,
 			String[] valores, String tituloPrecio) {
-
+		
 		BorderPane border = new BorderPane();
 		GridPane gridPane = new GridPane();
 		gridPane.setVgap(10);
@@ -180,27 +182,27 @@ public class FieldPanel extends Pane {
 				if (User.cadenaCategoria.equals("LACTEOS")) {
 					for (int i = 0; i < 4; i++) {
 						if(values.get(i).getText().length() != 0) {
-							Pedido.agregarProducto(almacen.lacteos.get(i), Integer.valueOf(values.get(i).getText()));
+							User.c.getPedido().agregarProducto(almacen.lacteos.get(i), Integer.valueOf(values.get(i).getText()));
 						}					
 					} 
 				}else if(User.cadenaCategoria.equals("CARNES")) {
 					for (int i = 0; i < 4; i++) {
 						if(values.get(i).getText().length() != 0) {
-							Pedido.agregarProducto(almacen.carnes.get(i), Integer.valueOf(values.get(i).getText()));
+							User.c.getPedido().agregarProducto(almacen.carnes.get(i), Integer.valueOf(values.get(i).getText()));
 						}
 						
 					} 
 				}else if(User.cadenaCategoria.equals("VEGETALES")) {
 					for (int i = 0; i < 4; i++) {
 						if(values.get(i).getText().length() != 0) {
-							Pedido.agregarProducto(almacen.vegetales.get(i), Integer.valueOf(values.get(i).getText()));
+							User.c.getPedido().agregarProducto(almacen.vegetales.get(i), Integer.valueOf(values.get(i).getText()));
 						}
 						
 					}
 				}else if(User.cadenaCategoria.equals("FRUTAS")) {
 					for (int i = 0; i < 4; i++) {
 						if(values.get(i).getText().length() != 0) {
-							Pedido.agregarProducto(almacen.frutas.get(i), Integer.valueOf(values.get(i).getText()));
+							User.c.getPedido().agregarProducto(almacen.frutas.get(i), Integer.valueOf(values.get(i).getText()));
 						}
 						
 					}
