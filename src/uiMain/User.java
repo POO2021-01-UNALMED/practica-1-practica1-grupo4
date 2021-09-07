@@ -335,6 +335,77 @@ public class User {
 				} else if (control.equals(estadoDomi)) {
 					root.getChildren().clear();
 					root.getChildren().add(menuBar);
+					VBox consultaPedido = new VBox();
+					consultaPedido.setAlignment(Pos.CENTER);
+					consultaPedido.getChildren().addAll(new Label("Aquí hará su consulta"));
+					consultaPedido.setPadding(new Insets(20));
+					Label message;
+					
+					ImageView status;
+					switch(Cliente.getPedido().estado) {
+					case INICIADO:
+						message = new Label("Su pedido se encuentra iniciado");
+						message.setPadding(new Insets(10));
+						consultaPedido.getChildren().clear();
+						status = new ImageView(new Image("./imagenes/Iniciado.jpg"));
+						status.setFitHeight(300);
+						status.setFitWidth(300);
+						consultaPedido.getChildren().addAll(message,status );
+						break;
+					case EN_PROCESO:
+						
+						message = new Label("El Picker se encuentra escogiendo sus productos");
+						message.setPadding(new Insets(10));
+						consultaPedido.getChildren().clear();
+						status = new ImageView(new Image("./imagenes/EnProceso.jpg"));
+						status.setFitHeight(300);
+						status.setFitWidth(300);
+						consultaPedido.getChildren().addAll(message,status );
+						break;
+					case FINALIZADO:
+						message = new Label("Su pedido se le fue entregado al conductor");
+						message.setPadding(new Insets(10));
+						consultaPedido.getChildren().clear();
+						status = new ImageView(new Image("./imagenes/Finalizado.jpg"));
+						status.setFitHeight(300);
+						status.setFitWidth(300);
+						consultaPedido.getChildren().addAll(message,status );
+						
+						break;
+					case EN_RUTA:
+					
+						message = new Label("Su pedido se encuentra en ruta");
+						message.setPadding(new Insets(10));
+						consultaPedido.getChildren().clear();
+						status =  new ImageView(new Image("./imagenes/En_Ruta.jpg"));
+						status.setFitHeight(300);
+						status.setFitWidth(300);
+						consultaPedido.getChildren().addAll(message,status );
+						
+						break;
+					case ENTREGADO:
+						
+						message = new Label("Su pedido ya se le fue entregado");
+						message.setPadding(new Insets(10));
+						consultaPedido.getChildren().clear();
+						status = new ImageView(new Image("./imagenes/Entregado.jpg"));
+						status.setFitHeight(300);
+						status.setFitWidth(300);
+						consultaPedido.getChildren().addAll(message,status );
+						break;
+					default:
+					
+						message = new Label("Su pedido no ha sido iniciado");
+						message.setPadding(new Insets(10));
+						consultaPedido.getChildren().clear();
+						status = new ImageView(new Image("./imagenes/Error.png"));
+						status.setFitHeight(300);
+						status.setFitWidth(300);
+						consultaPedido.getChildren().addAll(message,status );
+						break;
+					}
+					root.getChildren().add(consultaPedido);
+				}
 
 				} else if (control.equals(consultaEmpleados)) {
 					root.getChildren().clear();
@@ -349,4 +420,4 @@ public class User {
 		}
 
 	}
-}
+
