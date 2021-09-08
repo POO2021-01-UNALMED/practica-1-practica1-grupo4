@@ -3,6 +3,8 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+import errors.ErrorCantidaProducto;
+
 ///PEDIDO\\\ Se trata de las compras que realiza el cliente en el Almacen
 
 public class Pedido {
@@ -22,8 +24,11 @@ ENTREGADO: El pedido entra en este estado cuando finalmente llega a la casa del 
 	public static ArrayList<String>carrito = new ArrayList<>(); //carrito que acomula los productos seleccionados por el cliente
 	
 	// El siguiente método agrega un nuevo producto al carrito
-	public static void agregarProducto(Producto producto, int numeroVeces ) {
+	public static void agregarProducto(Producto producto, int numeroVeces ) throws ErrorCantidaProducto {
 		carrito.add(producto.nombre +" "+numeroVeces + " $"+ (numeroVeces*producto.precio));
+		if (producto.cantidad-numeroVeces <0) {
+			throw new ErrorCantidaProducto();
+		}
 		producto.cantidad-=numeroVeces;
 		total+= producto.precio*numeroVeces;
 	}

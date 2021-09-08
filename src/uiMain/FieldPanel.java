@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import errors.ErrorCantidaProducto;
 import errors.ErrorTexto;
 import gestorAplicación.Almacen;
 import gestorAplicación.Cliente;
@@ -186,33 +187,68 @@ public class FieldPanel extends Pane {
 				if (User.cadenaCategoria.equals("LACTEOS")) {
 					for (int i = 0; i < 4; i++) {
 						if(values.get(i).getText().length() != 0) {
-							User.c.getPedido().agregarProducto(almacen.lacteos.get(i), Integer.valueOf(values.get(i).getText()));
+							try {
+								User.c.getPedido().agregarProducto(almacen.lacteos.get(i), Integer.valueOf(values.get(i).getText()));
+							} catch (ErrorCantidaProducto e) {
+								// TODO Auto-generated catch block
+								Alert alert = new Alert(AlertType.WARNING);
+								alert.setTitle("Error Cantidad producto");
+								alert.setContentText(e.getMessage());
+								alert.showAndWait();
+								return;
+							}
 						}					
 					} 
 				}else if(User.cadenaCategoria.equals("CARNES")) {
 					for (int i = 0; i < 4; i++) {
 						if(values.get(i).getText().length() != 0) {
-							User.c.getPedido().agregarProducto(almacen.carnes.get(i), Integer.valueOf(values.get(i).getText()));
+							try {
+								User.c.getPedido().agregarProducto(almacen.carnes.get(i), Integer.valueOf(values.get(i).getText()));
+							} catch (ErrorCantidaProducto e) {
+								// TODO Auto-generated catch block
+								Alert alert = new Alert(AlertType.WARNING);
+								alert.setTitle("Error Cantidad producto");
+								alert.setContentText(e.getMessage());
+								alert.showAndWait();
+								return;
+							}
 						}
 						
 					} 
 				}else if(User.cadenaCategoria.equals("VEGETALES")) {
 					for (int i = 0; i < 4; i++) {
 						if(values.get(i).getText().length() != 0) {
-							User.c.getPedido().agregarProducto(almacen.vegetales.get(i), Integer.valueOf(values.get(i).getText()));
+							try {
+								User.c.getPedido().agregarProducto(almacen.vegetales.get(i), Integer.valueOf(values.get(i).getText()));
+							} catch ( ErrorCantidaProducto e) {
+								// TODO Auto-generated catch block
+								Alert alert = new Alert(AlertType.WARNING);
+								alert.setTitle("Error Cantidad producto");
+								alert.setContentText(e.getMessage());
+								alert.showAndWait();
+								return;
+							}
 						}
 						
 					}
 				}else if(User.cadenaCategoria.equals("FRUTAS")) {
 					for (int i = 0; i < 4; i++) {
 						if(values.get(i).getText().length() != 0) {
-							User.c.getPedido().agregarProducto(almacen.frutas.get(i), Integer.valueOf(values.get(i).getText()));
+							try {
+								User.c.getPedido().agregarProducto(almacen.frutas.get(i), Integer.valueOf(values.get(i).getText()));
+							} catch (ErrorCantidaProducto e) {
+								// TODO Auto-generated catch block
+								Alert alert = new Alert(AlertType.WARNING);
+								alert.setTitle("Error Cantidad producto");
+								alert.setContentText(e.getMessage());
+								alert.showAndWait();
+								return;
+							}
 						}
 						
 					}
 				}
 				
-				System.out.println(Pedido.carrito);	
 				getPanel().getChildren().clear();	
 			}});
 		

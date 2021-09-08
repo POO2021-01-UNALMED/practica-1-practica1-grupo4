@@ -80,7 +80,7 @@ public class User {
 	public User() {
 
 		String[] criteria = { "Nombre", "Apellido", "Número de Identificación", "Dirección residencial" };
-		String[] valores = { "nombre", "apellido", null, null };
+		String[] valores = { null, null, null, null };
 
 		// Cliente c = new Cliente();
 		root = new VBox();
@@ -109,12 +109,7 @@ public class User {
 				label1.setPrefHeight(25);
 				label1.setPrefWidth(Double.MAX_VALUE);
 				label1.setAlignment(Pos.CENTER);
-
-				label2 = new Label("Descripcion");
-				label2.setPrefHeight(77);
-				label2.setPrefWidth(Double.MAX_VALUE);
-				label2.setAlignment(Pos.CENTER);
-				root3.getChildren().addAll(label1, label2);
+				root3.getChildren().addAll(label1);
 
 				try {
 					c = new Cliente();
@@ -122,7 +117,7 @@ public class User {
 					Pedido p1 = new Pedido();
 					Almacen.pedido = p1;
 					c.llamar();
-
+					label1.setText("Bienvenido " + c.getNombreCompleto());
 				} catch (Exception e) {
 
 				}
@@ -158,7 +153,7 @@ public class User {
 
 		root2.setPadding(new Insets(10));
 		root.getChildren().addAll(new Label("Nombre de la Aplicación"), root2);
-		sceneU = new Scene(root, 500, 500);
+		sceneU = new Scene(root, 530, 520);
 
 	}
 
@@ -201,7 +196,7 @@ public class User {
 					GridPane.setConstraints(txtCantidad, 1, 1);
 					GridPane.setConstraints(precio, 2, 1);
 
-					Label relleno = new Label("relleno");
+					
 					Button finalizar = new Button("Finalizar Domicilio");
 					finalizar.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -257,14 +252,37 @@ public class User {
 
 					GridPane.setConstraints(tipoProducto, 0, 0);
 					GridPane.setConstraints(cbxTiposProducto, 1, 0);
-					GridPane.setConstraints(finalizar, 0, 1);
+					GridPane.setConstraints(finalizar, 1, 1,4,1);
 					GridPane.setConstraints(txtProducto, 0, 2);
 					GridPane.setConstraints(txtCantidad, 1, 2);
 					GridPane.setConstraints(precio, 2, 2);
 					hacerDomicilio.getChildren().addAll(tipoProducto, cbxTiposProducto, finalizar);
-
-					realizandoPedido.getChildren().addAll(relleno);
+					
+					GridPane imagenesSuper = new GridPane();
+					imagenesSuper.setVgap(5);
+					imagenesSuper.setHgap(5);
+					imagenesSuper.setPadding(new Insets(40));
+					ImageView imvSuper1 = new ImageView(new Image("./imagenes/carnes.jpg"));
+					imvSuper1.setFitHeight(150);
+					imvSuper1.setFitWidth(100);
+					ImageView imvSuper2 = new ImageView(new Image("./imagenes/verduras.jpg"));
+					imvSuper2.setFitHeight(150);
+					imvSuper2.setFitWidth(100);
+					ImageView imvSuper3 = new ImageView(new Image("./imagenes/lacteos.jpg"));
+					imvSuper3.setFitHeight(150);
+					imvSuper3.setFitWidth(100);
+					ImageView imvSuper4 = new ImageView(new Image("./imagenes/frutas.jpeg"));
+					imvSuper4.setFitHeight(150);
+					imvSuper4.setFitWidth(100);
+					imagenesSuper.setConstraints(imvSuper1, 0, 0);
+					imagenesSuper.setConstraints(imvSuper2, 1, 0);
+					imagenesSuper.setConstraints(imvSuper3, 0, 1);
+					imagenesSuper.setConstraints(imvSuper4, 1, 1);
+					imagenesSuper.getChildren().addAll(imvSuper1,imvSuper2,imvSuper3,imvSuper4);
+					imagenesSuper.setAlignment(Pos.CENTER);
 					realizandoPedido.setAlignment(Pos.CENTER);
+					realizandoPedido.getChildren().addAll(imagenesSuper);
+					
 					intento.getChildren().addAll(hacerDomicilio, realizandoPedido);
 
 					cbxTiposProducto.valueProperty().addListener(new ChangeListener<String>() {
@@ -281,7 +299,7 @@ public class User {
 									lista.add(new Image(pi.image));
 									precios.add(pi.precio);
 								}
-								String[] valores = { "1", "2", null, null };
+								String[] valores = { null, null, null, null };
 								FieldPanel rootLacteos = new FieldPanel("Producto", lista, precios, "cantidad", valores,
 										"precio");
 
@@ -296,7 +314,7 @@ public class User {
 									lista.add(new Image(pi.image));
 									precios.add(pi.precio);
 								}
-								String[] valores = { "1", "2", null, null };
+								String[] valores = { null, null, null, null };
 								FieldPanel rootCarnes = new FieldPanel("Producto", lista, precios, "cantidad", valores,
 										"precio");
 
@@ -311,7 +329,7 @@ public class User {
 									lista.add(new Image(pi.image));
 									precios.add(pi.precio);
 								}
-								String[] valores = { "1", "2", null, null };
+								String[] valores = { null,null, null, null };
 								FieldPanel rootVegetales = new FieldPanel("Producto", lista, precios, "cantidad",
 										valores, "precio");
 
@@ -326,7 +344,7 @@ public class User {
 									lista.add(new Image(pi.image));
 									precios.add(pi.precio);
 								}
-								String[] valores = { "1", "2", null, null };
+								String[] valores = { null, null, null, null };
 								FieldPanel rootFrutas = new FieldPanel("Producto", lista, precios, "cantidad", valores,
 										"precio");
 
@@ -458,13 +476,13 @@ public class User {
 								alert.showAndWait();
 								return;
 							}
-							ConductorI.getChildren().remove(2);
+							//ConductorI.getChildren().remove(2);
 							ConductorI.getChildren().add(new Label(c.infoEmpleado(2)));
 							
 						}
 						
 					});
-					ConductorI.getChildren().addAll(new Label("Consultar información \n del Conductor"), ConductorB, new Label("relleno"));
+					ConductorI.getChildren().addAll(new Label("Consultar información \n del Conductor"), ConductorB);
 					ConductorI.setPadding(new Insets(20));
 					
 					Empleados.getChildren().addAll(PickerI, ConductorI);

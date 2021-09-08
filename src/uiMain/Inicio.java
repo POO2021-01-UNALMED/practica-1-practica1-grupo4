@@ -65,19 +65,19 @@ public class Inicio {
 		l3.setTextFill(Color.WHITE);
 		l3.setOnMouseClicked(manejador);
 
-		img1 = new Image("./imagenes/unal.png");
+		img1 = new Image("./imagenes/santiago1.jpg");
 		imv1 = new ImageView(img1);
 		imv1.setFitHeight(150);
 		imv1.setFitWidth(100);
-		img2 = new Image("./imagenes/unal2.png");
+		img2 = new Image("./imagenes/santiago2.jpg");
 		imv2 = new ImageView(img2);
 		imv2.setFitHeight(150);
 		imv2.setFitWidth(100);
-		img3 = new Image("./imagenes/doggie.jpg");
+		img3 = new Image("./imagenes/santiago3.jpg");
 		imv3 = new ImageView(img3);
 		imv3.setFitHeight(150);
 		imv3.setFitWidth(100);
-		img4 = new Image("./imagenes/bicho.jpeg");
+		img4 = new Image("./imagenes/santiago4.jpg");
 		imv4 = new ImageView(img4);
 		imv4.setFitHeight(150);
 		imv4.setFitWidth(100);
@@ -148,45 +148,41 @@ public class Inicio {
 			if (control instanceof Label) {
 				if (control.equals(l3)) {
 					if (contp3 == 0) {
-						l3.setText("usuario 1");
-						imv1.setImage(new Image("./imagenes/im1.jpeg"));
-						imv2.setImage(new Image("./imagenes/im2.jpeg"));
-						imv3.setImage(new Image("./imagenes/im3.jpeg"));
-						imv4.setImage(new Image("./imagenes/im4.jpeg"));
+						l3.setText("Soy Santiago Palacio, tengo 19 años,\n estudio ciencias de la computación");
+						imv1.setImage(new Image("./imagenes/santiago1.jpg"));
+						imv2.setImage(new Image("./imagenes/santiago2.jpg"));
+						imv3.setImage(new Image("./imagenes/santiago3.jpg"));
+						imv4.setImage(new Image("./imagenes/santiago4.jpg"));
 						contp3++;
 					} else if (contp3 == 1) {
-						l3.setText("usuario 2");
-						imv1.setImage(img1);
-						imv2.setImage(img2);
-						imv3.setImage(img3);
-						imv4.setImage(img4);
-						contp3++;
-					} else if (contp3 == 2) {
-						l3.setText("usuario 3");
-						contp3 = 0;
+						l3.setText("Soy Daniel Metaute, tengo 19 años,\n estudio ciencias de la computación");
+						imv1.setImage(new Image("./imagenes/daniel1.jpeg"));
+						imv2.setImage(new Image("./imagenes/daniel2.jpeg"));
+						imv3.setImage(new Image("./imagenes/daniel3.jpeg"));
+						imv4.setImage(new Image("./imagenes/daniel4.jpeg"));
+						contp3=0;
 					}
-	
 				}
 			}
 			if(control instanceof ImageView) {
 				if(contador==0) {
-					imvSuper1.setImage(new Image("./imagenes/mercado1.jpg"));
+					imvSuper1.setImage(new Image("imagenes/mercado1.jpg"));
 					contador ++;
 				}
 				else if(contador==1) {
-					imvSuper1.setImage(new Image("./imagenes/mercado2.jpg"));
+					imvSuper1.setImage(new Image("imagenes/mercado2.jpg"));
 					contador ++;
 				}
 				else if(contador==2) {
-					imvSuper1.setImage(new Image("./imagenes/mercado3.jpg"));
+					imvSuper1.setImage(new Image("imagenes/mercado3.jpg"));
 					contador ++;
 				}
 				else if(contador==3) {
-					imvSuper1.setImage(new Image("./imagenes/mercado4.jpg"));
+					imvSuper1.setImage(new Image("imagenes/mercado4.jpg"));
 					contador ++;
 				}
 				else if(contador==4) {
-					imvSuper1.setImage(new Image("./imagenes/super.jpg"));
+					imvSuper1.setImage(new Image("imagenes/super.jpg"));
 					contador=0;
 				}
 			}

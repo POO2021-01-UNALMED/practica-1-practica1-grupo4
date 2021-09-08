@@ -84,7 +84,7 @@ public class Almacen {
 		vegetales.add(new Producto("Papa", 2300, 80,"./imagenes/iconPapa.png"));
 
 		
-		frutas.add(new Producto("Manzana", 1400, 62,"./imagenes/iconManzana.png"));
+		frutas.add(new Producto("Manzana", 1400, 7,"./imagenes/iconManzana.png"));
 		frutas.add(new Producto("Uvas", 1800, 54,"./imagenes/iconUva.png"));
 		frutas.add(new Producto("Piña", 2400, 49,"./imagenes/iconPina.png"));
 		frutas.add(new Producto("Banana", 1300, 79,"./imagenes/iconBanano.png"));
